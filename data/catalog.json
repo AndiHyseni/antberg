@@ -1,0 +1,2740 @@
+{
+  "generated_at": "2026-07-16T21:46:04.116Z",
+  "strategy_id": "buy_hold",
+  "context": {
+    "opportunities_found": 100,
+    "scanned": 151139,
+    "eliminated": 144855,
+    "context_line": "100 opportunities found in 151.139 scanned objects · ranked by score."
+  },
+  "filter": {
+    "strategy": "buy_hold",
+    "ticketMin": 2000000,
+    "ticketMax": 10000000,
+    "assetTypes": [
+      "Mixed-Use",
+      "Residential",
+      "Industrial"
+    ],
+    "excludeMonuments": false,
+    "excludeSingleFamily": false,
+    "city": "Stuttgart",
+    "limit": 100
+  },
+  "cards": [
+    {
+      "object_id": "STG-001900",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 20,
+      "ticket_range": "1.929.840 € – 2.610.960 €",
+      "leading_signal": "Floor upside signal (6 pts)",
+      "centroid_x": 517514.27416666667,
+      "centroid_y": 5402726.121666667
+    },
+    {
+      "object_id": "STG-000100",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 19,
+      "ticket_range": "2.143.020 € – 2.899.380 €",
+      "leading_signal": "Floor upside signal (6 pts)",
+      "centroid_x": 516356.6247058824,
+      "centroid_y": 5399819.420588235
+    },
+    {
+      "object_id": "STG-000400",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 17,
+      "ticket_range": "1.662.430 € – 2.249.170 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 508880.8933333333,
+      "centroid_y": 5397307.802962963
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 18,
+      "ticket_range": "1.913.010 € – 2.588.190 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 517570.37200000003,
+      "centroid_y": 5402723.090666668
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 15,
+      "ticket_range": "4.345.880 € – 5.879.720 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 511530.2408333334,
+      "centroid_y": 5397818.089166666
+    },
+    {
+      "object_id": "STG-000200",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 17,
+      "ticket_range": "2.169.200 € – 2.934.800 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 511453.0936842105,
+      "centroid_y": 5401059.019473684
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 17,
+      "ticket_range": "2.132.480 € – 2.885.120 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 515060.0111111111,
+      "centroid_y": 5394296.097777778
+    },
+    {
+      "object_id": "STG-000601",
+      "district": "Stuttgart · Dantestraße",
+      "asset_type": "Industrial",
+      "score": 17,
+      "ticket_range": "2.108.680 € – 2.852.920 €",
+      "leading_signal": "Floor upside signal (6 pts)",
+      "centroid_x": 510217.0170833333,
+      "centroid_y": 5401657.281250001
+    },
+    {
+      "object_id": "STG-000400",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 17,
+      "ticket_range": "1.428.680 € – 1.932.920 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 508899.6266666666,
+      "centroid_y": 5396348.915238095
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 17,
+      "ticket_range": "1.077.120 € – 1.457.280 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 508432.1553333335,
+      "centroid_y": 5396231.482
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart · Luise-Benger-Straße",
+      "asset_type": "Residential",
+      "score": 14,
+      "ticket_range": "2.008.720 € – 2.717.680 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 520750.92672727286,
+      "centroid_y": 5402530.386909088
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 14,
+      "ticket_range": "2.879.800 € – 3.896.200 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 511981.73777777766,
+      "centroid_y": 5402768.576111112
+    },
+    {
+      "object_id": "STG-000101",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 14,
+      "ticket_range": "1.720.400 € – 2.327.600 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 508386.8225,
+      "centroid_y": 5397382.39
+    },
+    {
+      "object_id": "STG-002100",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 14,
+      "ticket_range": "1.451.120 € – 1.963.280 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 511728.5994444444,
+      "centroid_y": 5401881.905
+    },
+    {
+      "object_id": "STG-000400",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 16,
+      "ticket_range": "3.779.270 € – 5.113.130 €",
+      "leading_signal": "Floor upside signal (4 pts)",
+      "centroid_x": 510618.60000000003,
+      "centroid_y": 5397508.158750001
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 16,
+      "ticket_range": "1.323.280 € – 1.790.320 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 516080.22818181815,
+      "centroid_y": 5394506.033636364
+    },
+    {
+      "object_id": "STG-000001",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 13,
+      "ticket_range": "3.713.820 € – 5.024.580 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 511536.5234640523,
+      "centroid_y": 5401007.030326797
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 13,
+      "ticket_range": "2.682.260 € – 3.628.940 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 509601.7675000001,
+      "centroid_y": 5403103.395454546
+    },
+    {
+      "object_id": "STG-000100",
+      "district": "Stuttgart · Tiroler Straße",
+      "asset_type": "Residential",
+      "score": 13,
+      "ticket_range": "1.823.080 € – 2.466.520 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 520556.9843604648,
+      "centroid_y": 5402150.40767442
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 13,
+      "ticket_range": "1.120.130 € – 1.515.470 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 510700.9129816515,
+      "centroid_y": 5402839.656284405
+    },
+    {
+      "object_id": "STG-002900",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 13,
+      "ticket_range": "3.079.720 € – 4.166.680 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 510824.372,
+      "centroid_y": 5397580.272
+    },
+    {
+      "object_id": "STG-000100",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 13,
+      "ticket_range": "2.258.960 € – 3.056.240 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 512581.81322580646,
+      "centroid_y": 5399545.236774194
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 13,
+      "ticket_range": "1.183.710 € – 1.601.490 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 512874.3855555554,
+      "centroid_y": 5402061.746666667
+    },
+    {
+      "object_id": "STG-000100",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 13,
+      "ticket_range": "1.282.820 € – 1.735.580 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 509129.16727272735,
+      "centroid_y": 5397243.306363637
+    },
+    {
+      "object_id": "STG-002800",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 15,
+      "ticket_range": "2.867.900 € – 3.880.100 €",
+      "leading_signal": "Floor upside signal (6 pts)",
+      "centroid_x": 510564.59266666655,
+      "centroid_y": 5401777.033333333
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Industrial",
+      "score": 15,
+      "ticket_range": "1.511.300 € – 2.044.700 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 512163.6446666668,
+      "centroid_y": 5398595.669333334
+    },
+    {
+      "object_id": "STG-002000",
+      "district": "Stuttgart",
+      "asset_type": "Industrial",
+      "score": 15,
+      "ticket_range": "1.647.470 € – 2.228.930 €",
+      "leading_signal": "Floor upside signal (4 pts)",
+      "centroid_x": 510132.7078947369,
+      "centroid_y": 5401688.601052632
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Industrial",
+      "score": 15,
+      "ticket_range": "1.696.940 € – 2.295.860 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 515368.6240000001,
+      "centroid_y": 5394265.836000001
+    },
+    {
+      "object_id": "STG-002900",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 15,
+      "ticket_range": "1.661.240 € – 2.247.560 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 516213.4461290322,
+      "centroid_y": 5403610.1367741935
+    },
+    {
+      "object_id": "STG-000100",
+      "district": "Stuttgart",
+      "asset_type": "Industrial",
+      "score": 15,
+      "ticket_range": "1.585.760 € – 2.145.440 €",
+      "leading_signal": "Floor upside signal (4 pts)",
+      "centroid_x": 516067.7122222221,
+      "centroid_y": 5394013.164444444
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 15,
+      "ticket_range": "1.170.620 € – 1.583.780 €",
+      "leading_signal": "Floor upside signal (4 pts)",
+      "centroid_x": 509050.3125,
+      "centroid_y": 5396466.7425
+    },
+    {
+      "object_id": "STG-000002",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 12,
+      "ticket_range": "1.361.360 € – 1.841.840 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 516696.5276712327,
+      "centroid_y": 5398408.559315069
+    },
+    {
+      "object_id": "STG-004700",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 12,
+      "ticket_range": "3.500.640 € – 4.736.160 €",
+      "leading_signal": "Volume gap signal (4 pts)",
+      "centroid_x": 511392.12978947366,
+      "centroid_y": 5395752.141684211
+    },
+    {
+      "object_id": "STG-000001",
+      "district": "Stuttgart · Helene-Pfleiderer-Straße",
+      "asset_type": "Residential",
+      "score": 12,
+      "ticket_range": "1.740.970 € – 2.355.430 €",
+      "leading_signal": "Volume gap signal (4 pts)",
+      "centroid_x": 512309.73571428575,
+      "centroid_y": 5399611.916666667
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 12,
+      "ticket_range": "3.700.900 € – 5.007.100 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 511569.8433333333,
+      "centroid_y": 5402840.0616666665
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 12,
+      "ticket_range": "1.968.260 € – 2.662.940 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 515824.7786666666,
+      "centroid_y": 5394320.455333333
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 12,
+      "ticket_range": "1.675.520 € – 2.266.880 €",
+      "leading_signal": "Floor upside signal (4 pts)",
+      "centroid_x": 512140.03250000003,
+      "centroid_y": 5398428.7325
+    },
+    {
+      "object_id": "STG-001000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 12,
+      "ticket_range": "1.062.160 € – 1.437.040 €",
+      "leading_signal": "Volume gap signal (4 pts)",
+      "centroid_x": 511922.48416666663,
+      "centroid_y": 5402804.203333334
+    },
+    {
+      "object_id": "STG-000500",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 14,
+      "ticket_range": "1.415.590 € – 1.915.210 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 515474.8843333332,
+      "centroid_y": 5394172.809666666
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 14,
+      "ticket_range": "1.189.320 € – 1.609.080 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 515603.799,
+      "centroid_y": 5397662.5235
+    },
+    {
+      "object_id": "STG-000700",
+      "district": "Stuttgart",
+      "asset_type": "Industrial",
+      "score": 14,
+      "ticket_range": "1.421.200 € – 1.922.800 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 508286.6370000001,
+      "centroid_y": 5396800.688
+    },
+    {
+      "object_id": "STG-000501",
+      "district": "Stuttgart",
+      "asset_type": "Industrial",
+      "score": 14,
+      "ticket_range": "2.667.980 € – 3.609.620 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 515037.24821428576,
+      "centroid_y": 5394555.3335714275
+    },
+    {
+      "object_id": "STG-000002",
+      "district": "Stuttgart",
+      "asset_type": "Industrial",
+      "score": 14,
+      "ticket_range": "1.140.700 € – 1.543.300 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 515862.881935484,
+      "centroid_y": 5394138.055483871
+    },
+    {
+      "object_id": "STG-000800",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 14,
+      "ticket_range": "1.365.100 € – 1.846.900 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 510680.12066666665,
+      "centroid_y": 5397306.757999999
+    },
+    {
+      "object_id": "STG-000100",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 14,
+      "ticket_range": "1.366.970 € – 1.849.430 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 515471.405,
+      "centroid_y": 5394072.25
+    },
+    {
+      "object_id": "STG-001900",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 11,
+      "ticket_range": "1.645.600 € – 2.226.400 €",
+      "leading_signal": "Volume gap signal (4 pts)",
+      "centroid_x": 510142.9509677421,
+      "centroid_y": 5402134.167419354
+    },
+    {
+      "object_id": "STG-000200",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 11,
+      "ticket_range": "1.084.600 € – 1.467.400 €",
+      "leading_signal": "Volume gap signal (4 pts)",
+      "centroid_x": 513949.57018181816,
+      "centroid_y": 5402305.768545454
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 11,
+      "ticket_range": "1.219.240 € – 1.649.560 €",
+      "leading_signal": "Volume gap signal (4 pts)",
+      "centroid_x": 512049.51709677407,
+      "centroid_y": 5398969.884516129
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 11,
+      "ticket_range": "1.394.680 € – 1.886.920 €",
+      "leading_signal": "Volume gap signal (4 pts)",
+      "centroid_x": 515382.8570588236,
+      "centroid_y": 5394447.185441178
+    },
+    {
+      "object_id": "STG-000002",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 11,
+      "ticket_range": "1.344.700 € – 1.819.300 €",
+      "leading_signal": "Volume gap signal (4 pts)",
+      "centroid_x": 520721.8966666667,
+      "centroid_y": 5402615.777500001
+    },
+    {
+      "object_id": "STG-000700",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 11,
+      "ticket_range": "1.019.150 € – 1.378.850 €",
+      "leading_signal": "Volume gap signal (4 pts)",
+      "centroid_x": 512190.575,
+      "centroid_y": 5404676.024999999
+    },
+    {
+      "object_id": "STG-000100",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 11,
+      "ticket_range": "1.064.030 € – 1.439.570 €",
+      "leading_signal": "Volume gap signal (4 pts)",
+      "centroid_x": 511609.2843333333,
+      "centroid_y": 5401517.264666666
+    },
+    {
+      "object_id": "STG-000400",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 11,
+      "ticket_range": "2.244.000 € – 3.036.000 €",
+      "leading_signal": "Volume gap signal (4 pts)",
+      "centroid_x": 509035.7918181818,
+      "centroid_y": 5397277.44
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart · Österreichischer Platz",
+      "asset_type": "Residential",
+      "score": 13,
+      "ticket_range": "1.451.120 € – 1.963.280 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 512611.98545945965,
+      "centroid_y": 5401574.183621621
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 13,
+      "ticket_range": "2.612.390 € – 3.534.410 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 509811.54529126204,
+      "centroid_y": 5402411.400582523
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart · Fraasstraße",
+      "asset_type": "Residential",
+      "score": 13,
+      "ticket_range": "1.088.340 € – 1.472.460 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 514379.9498591549,
+      "centroid_y": 5402713.91338028
+    },
+    {
+      "object_id": "STG-000100",
+      "district": "Stuttgart · Moroweg",
+      "asset_type": "Residential",
+      "score": 13,
+      "ticket_range": "1.196.800 € – 1.619.200 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 510761.9260869564,
+      "centroid_y": 5397627.486956521
+    },
+    {
+      "object_id": "STG-000100",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 13,
+      "ticket_range": "1.318.350 € – 1.783.650 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 513037.4493750001,
+      "centroid_y": 5399788.632187499
+    },
+    {
+      "object_id": "STG-001400",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 13,
+      "ticket_range": "1.221.110 € – 1.652.090 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 514490.0917391304,
+      "centroid_y": 5403321.284782609
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 13,
+      "ticket_range": "3.710.080 € – 5.019.520 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 512287.76785714284,
+      "centroid_y": 5403444.917142856
+    },
+    {
+      "object_id": "STG-000400",
+      "district": "Stuttgart · Rüderner Straße",
+      "asset_type": "Residential",
+      "score": 13,
+      "ticket_range": "1.097.690 € – 1.485.110 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 519929.3784375,
+      "centroid_y": 5401115.5787499985
+    },
+    {
+      "object_id": "STG-000100",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 13,
+      "ticket_range": "3.439.100 € – 4.652.900 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 518530.7266666666,
+      "centroid_y": 5401439.583333333
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Industrial",
+      "score": 13,
+      "ticket_range": "3.831.800 € – 5.184.200 €",
+      "leading_signal": "Floor upside signal (4 pts)",
+      "centroid_x": 509847.7341666667,
+      "centroid_y": 5397231.402500001
+    },
+    {
+      "object_id": "STG-000101",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 13,
+      "ticket_range": "1.118.260 € – 1.512.940 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 512629.379,
+      "centroid_y": 5399169.915999999
+    },
+    {
+      "object_id": "STG-000500",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 13,
+      "ticket_range": "1.251.030 € – 1.692.570 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 510867.41466666665,
+      "centroid_y": 5397226.127333332
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 10,
+      "ticket_range": "6.488.900 € – 8.779.100 €",
+      "leading_signal": "Age profile signal (3 pts)",
+      "centroid_x": 511700.14809523796,
+      "centroid_y": 5397313.243809523
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 10,
+      "ticket_range": "1.611.260 € – 2.179.940 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 516028.46090909094,
+      "centroid_y": 5394466.318181818
+    },
+    {
+      "object_id": "STG-000100",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 10,
+      "ticket_range": "4.477.120 € – 6.057.280 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 514465.83150000003,
+      "centroid_y": 5396071.069999998
+    },
+    {
+      "object_id": "STG-000401",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 10,
+      "ticket_range": "2.094.400 € – 2.833.600 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 516254.4368,
+      "centroid_y": 5394668.972
+    },
+    {
+      "object_id": "STG-000100",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 10,
+      "ticket_range": "3.242.580 € – 4.387.020 €",
+      "leading_signal": "Heating signal (4 pts)",
+      "centroid_x": 520103.5957142858,
+      "centroid_y": 5400651.484285714
+    },
+    {
+      "object_id": "STG-000400",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 10,
+      "ticket_range": "1.438.030 € – 1.945.570 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 512607.67294117657,
+      "centroid_y": 5401468.725882354
+    },
+    {
+      "object_id": "STG-000600",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 10,
+      "ticket_range": "2.288.880 € – 3.096.720 €",
+      "leading_signal": "Heating signal (4 pts)",
+      "centroid_x": 511530.8347058823,
+      "centroid_y": 5401993.211176471
+    },
+    {
+      "object_id": "STG-000500",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 10,
+      "ticket_range": "1.692.350 € – 2.289.650 €",
+      "leading_signal": "Age profile signal (3 pts)",
+      "centroid_x": 510584.21499999997,
+      "centroid_y": 5397495.21
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 10,
+      "ticket_range": "1.406.240 € – 1.902.560 €",
+      "leading_signal": "Age profile signal (3 pts)",
+      "centroid_x": 510788.70700000005,
+      "centroid_y": 5397123.333999999
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 10,
+      "ticket_range": "1.365.100 € – 1.846.900 €",
+      "leading_signal": "Age profile signal (3 pts)",
+      "centroid_x": 515796.63666666666,
+      "centroid_y": 5393981.948333333
+    },
+    {
+      "object_id": "STG-000100",
+      "district": "Stuttgart · Hans-Kächele-Straße",
+      "asset_type": "Residential",
+      "score": 12,
+      "ticket_range": "4.383.960 € – 5.931.240 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 514461.1945714285,
+      "centroid_y": 5396015.660571431
+    },
+    {
+      "object_id": "STG-000500",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 12,
+      "ticket_range": "2.382.380 € – 3.223.220 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 516258.61625,
+      "centroid_y": 5393902.3575
+    },
+    {
+      "object_id": "STG-000001",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 12,
+      "ticket_range": "1.366.120 € – 1.848.280 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 516625.05,
+      "centroid_y": 5398493.238
+    },
+    {
+      "object_id": "STG-000100",
+      "district": "Stuttgart · Burgstallstraße",
+      "asset_type": "Residential",
+      "score": 12,
+      "ticket_range": "2.070.090 € – 2.800.710 €",
+      "leading_signal": "Volume gap signal (4 pts)",
+      "centroid_x": 510856.30363636353,
+      "centroid_y": 5400410.378636363
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 12,
+      "ticket_range": "1.804.550 € – 2.441.450 €",
+      "leading_signal": "Volume gap signal (4 pts)",
+      "centroid_x": 518346.89333333337,
+      "centroid_y": 5403567.255416666
+    },
+    {
+      "object_id": "STG-000300",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 12,
+      "ticket_range": "1.120.130 € – 1.515.470 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 510702.25047619035,
+      "centroid_y": 5397075.378095238
+    },
+    {
+      "object_id": "STG-000300",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 12,
+      "ticket_range": "1.146.310 € – 1.550.890 €",
+      "leading_signal": "Volume gap signal (4 pts)",
+      "centroid_x": 515635.712,
+      "centroid_y": 5394146.449000001
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 9,
+      "ticket_range": "2.490.840 € – 3.369.960 €",
+      "leading_signal": "Heating signal (4 pts)",
+      "centroid_x": 509765.6912195122,
+      "centroid_y": 5402372.777317072
+    },
+    {
+      "object_id": "STG-000100",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 9,
+      "ticket_range": "1.935.450 € – 2.618.550 €",
+      "leading_signal": "Heating signal (4 pts)",
+      "centroid_x": 511865.9442592593,
+      "centroid_y": 5401477.707962964
+    },
+    {
+      "object_id": "STG-000300",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 9,
+      "ticket_range": "5.658.620 € – 7.655.780 €",
+      "leading_signal": "Heating signal (4 pts)",
+      "centroid_x": 511649.27666666656,
+      "centroid_y": 5401157.106666665
+    },
+    {
+      "object_id": "STG-000500",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 9,
+      "ticket_range": "1.950.410 € – 2.638.790 €",
+      "leading_signal": "Heating signal (4 pts)",
+      "centroid_x": 511336.2513333333,
+      "centroid_y": 5403998.522000001
+    },
+    {
+      "object_id": "STG-000200",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 9,
+      "ticket_range": "1.832.600 € – 2.479.400 €",
+      "leading_signal": "Volume gap signal (4 pts)",
+      "centroid_x": 512314.95642857143,
+      "centroid_y": 5404602.649285714
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 9,
+      "ticket_range": "5.516.840 € – 7.463.960 €",
+      "leading_signal": "Volume gap signal (2 pts)",
+      "centroid_x": 518271.4830434782,
+      "centroid_y": 5403743.069565216
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 9,
+      "ticket_range": "3.650.240 € – 4.938.560 €",
+      "leading_signal": "Heating signal (4 pts)",
+      "centroid_x": 513272.77564102557,
+      "centroid_y": 5402180.087948717
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 9,
+      "ticket_range": "1.256.640 € – 1.700.160 €",
+      "leading_signal": "Heating signal (4 pts)",
+      "centroid_x": 511824.57097560965,
+      "centroid_y": 5401570.46390244
+    },
+    {
+      "object_id": "STG-000300",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 9,
+      "ticket_range": "1.271.600 € – 1.720.400 €",
+      "leading_signal": "Heating signal (4 pts)",
+      "centroid_x": 514105.4429166666,
+      "centroid_y": 5402594.066666667
+    },
+    {
+      "object_id": "STG-001200",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 9,
+      "ticket_range": "1.224.850 € – 1.657.150 €",
+      "leading_signal": "Heating signal (4 pts)",
+      "centroid_x": 513151.0555172413,
+      "centroid_y": 5401314.891724137
+    },
+    {
+      "object_id": "STG-000900",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 9,
+      "ticket_range": "1.142.570 € – 1.545.830 €",
+      "leading_signal": "Heating signal (4 pts)",
+      "centroid_x": 514534.9783333332,
+      "centroid_y": 5402482.340833332
+    },
+    {
+      "object_id": "STG-000900",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 9,
+      "ticket_range": "1.110.780 € – 1.502.820 €",
+      "leading_signal": "Heating signal (4 pts)",
+      "centroid_x": 513693.75363636366,
+      "centroid_y": 5401351.456363637
+    },
+    {
+      "object_id": "STG-000100",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 9,
+      "ticket_range": "1.073.380 € – 1.452.220 €",
+      "leading_signal": "Heating signal (4 pts)",
+      "centroid_x": 509595.17699999997,
+      "centroid_y": 5398752.166
+    },
+    {
+      "object_id": "STG-001600",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 9,
+      "ticket_range": "1.026.630 € – 1.388.970 €",
+      "leading_signal": "Heating signal (4 pts)",
+      "centroid_x": 512001.2342105264,
+      "centroid_y": 5404299.466842106
+    },
+    {
+      "object_id": "STG-000300",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 11,
+      "ticket_range": "3.401.020 € – 4.601.380 €",
+      "leading_signal": "Volume gap signal (6 pts)",
+      "centroid_x": 515803.71916666673,
+      "centroid_y": 5393934.323333333
+    },
+    {
+      "object_id": "STG-000000",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 11,
+      "ticket_range": "2.832.200 € – 3.831.800 €",
+      "leading_signal": "Volume gap signal (4 pts)",
+      "centroid_x": 512712.6750000001,
+      "centroid_y": 5400503.605652173
+    },
+    {
+      "object_id": "STG-000101",
+      "district": "Stuttgart · Schönbühlstraße",
+      "asset_type": "Residential",
+      "score": 11,
+      "ticket_range": "2.152.370 € – 2.912.030 €",
+      "leading_signal": "Volume gap signal (4 pts)",
+      "centroid_x": 515013.3108730158,
+      "centroid_y": 5403378.934761906
+    },
+    {
+      "object_id": "STG-000200",
+      "district": "Stuttgart",
+      "asset_type": "Residential",
+      "score": 11,
+      "ticket_range": "1.776.500 € – 2.403.500 €",
+      "leading_signal": "Volume gap signal (4 pts)",
+      "centroid_x": 514162.7433027523,
+      "centroid_y": 5403413.759174315
+    }
+  ],
+  "dossiers": {
+    "STG-001900": {
+      "object_id": "STG-001900",
+      "flurstueckskennzeichen": "08146000007202001900",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 11,
+      "ticket_range": "1.645.600 € – 2.226.400 €",
+      "ticket_low": 1645600,
+      "ticket_high": 2226400,
+      "leading_signal": "Volume gap signal (4 pts)",
+      "parcel_m2": 4621,
+      "land_use": "Wohnbaufläche",
+      "built_gfa": 880,
+      "allowed_gfa": 1848,
+      "centroid_x": 510142.9509677421,
+      "centroid_y": 5402134.167419354,
+      "address_hidden": true,
+      "address_full": "Geißeichstraße",
+      "strategy_fit": "Residential land use with 4.621 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 48% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "likely oil heating — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        },
+        {
+          "weakness": "Building era ~1935 — layout and building services likely dated.",
+          "upside": "Core-and-shell refresh unlocks contemporary layouts and higher €/m² on exit or rent roll."
+        }
+      ],
+      "values": {
+        "today": 1936000,
+        "today_label": "1.936.000 €",
+        "after": 6652800,
+        "after_label": "6.652.800 €",
+        "upside_range": "3.053.600 € – 6.934.400 €",
+        "upside_low": 3053600,
+        "upside_high": 6934400
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        },
+        {
+          "label": "Multiple easements / infrastructure on parcel — check buildability.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 0,
+        "utilization_gap": 4,
+        "renovation_neglect": 0,
+        "heating_distress": 4,
+        "age_bonus": 0,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "renovation history"
+      ]
+    },
+    "STG-000100": {
+      "object_id": "STG-000100",
+      "flurstueckskennzeichen": "08146000200050000100",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 9,
+      "ticket_range": "1.073.380 € – 1.452.220 €",
+      "ticket_low": 1073380,
+      "ticket_high": 1452220,
+      "leading_signal": "Heating signal (4 pts)",
+      "parcel_m2": 2308,
+      "land_use": "Gartenbauland; Wohnbaufläche",
+      "built_gfa": 574,
+      "allowed_gfa": 923,
+      "centroid_x": 509595.17699999997,
+      "centroid_y": 5398752.166,
+      "address_hidden": true,
+      "address_full": "Böblinger Straße",
+      "strategy_fit": "Residential land use with 2.308 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 62% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "likely oil heating — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        },
+        {
+          "weakness": "Building era ~1889 — layout and building services likely dated.",
+          "upside": "Core-and-shell refresh unlocks contemporary layouts and higher €/m² on exit or rent roll."
+        }
+      ],
+      "values": {
+        "today": 1262800,
+        "today_label": "1.262.800 €",
+        "after": 3876600,
+        "after_label": "3.876.600 €",
+        "upside_range": "1.644.650 € – 3.167.600 €",
+        "upside_low": 1644650,
+        "upside_high": 3167600
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 0,
+        "utilization_gap": 2,
+        "renovation_neglect": 0,
+        "heating_distress": 4,
+        "age_bonus": 0,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "renovation history"
+      ]
+    },
+    "STG-000400": {
+      "object_id": "STG-000400",
+      "flurstueckskennzeichen": "08146000004404000400",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 10,
+      "ticket_range": "1.438.030 € – 1.945.570 €",
+      "ticket_low": 1438030,
+      "ticket_high": 1945570,
+      "leading_signal": "Volume gap signal (6 pts)",
+      "parcel_m2": 2210,
+      "land_use": "Wohnbaufläche",
+      "built_gfa": 769,
+      "allowed_gfa": 2652,
+      "centroid_x": 512607.67294117657,
+      "centroid_y": 5401468.725882354,
+      "address_hidden": true,
+      "address_full": "Römerstraße",
+      "strategy_fit": "Residential land use with 2.210 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 29% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "Built 2 floor(s) where zoning allows 3.",
+          "upside": "Additional storeys convert zoning headroom into leasable area without land purchase."
+        },
+        {
+          "weakness": "modern heating — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        },
+        {
+          "weakness": "Building era ~1889 — layout and building services likely dated.",
+          "upside": "Core-and-shell refresh unlocks contemporary layouts and higher €/m² on exit or rent roll."
+        }
+      ],
+      "values": {
+        "today": 1691800,
+        "today_label": "1.691.800 €",
+        "after": 5813640,
+        "after_label": "5.813.640 €",
+        "upside_range": "2.668.430 € – 11.037.800 €",
+        "upside_low": 2668430,
+        "upside_high": 11037800
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 1,
+        "utilization_gap": 6,
+        "renovation_neglect": 0,
+        "heating_distress": 0,
+        "age_bonus": 0,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "renovation history"
+      ]
+    },
+    "STG-000000": {
+      "object_id": "STG-000000",
+      "flurstueckskennzeichen": "8146000003878000000",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 11,
+      "ticket_range": "2.832.200 € – 3.831.800 €",
+      "ticket_low": 2832200,
+      "ticket_high": 3831800,
+      "leading_signal": "Volume gap signal (4 pts)",
+      "parcel_m2": 5474,
+      "land_use": "Gartenbauland",
+      "built_gfa": 1190,
+      "allowed_gfa": 2190,
+      "centroid_x": 512712.6750000001,
+      "centroid_y": 5400503.605652173,
+      "address_hidden": true,
+      "address_full": "Pfaffenweg 5A",
+      "strategy_fit": "Residential land use with 5.474 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 54% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "old gas heating likely — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        },
+        {
+          "weakness": "Plot 5.474 m² — footprint may under-use the land.",
+          "upside": "Larger plot enables yard infill, secondary volume, or phased development within one title."
+        }
+      ],
+      "values": {
+        "today": 3332000,
+        "today_label": "3.332.000 €",
+        "after": 8996400,
+        "after_label": "8.996.400 €",
+        "upside_range": "3.415.300 € – 7.180.000 €",
+        "upside_low": 3415300,
+        "upside_high": 7180000
+      },
+      "risks": [
+        {
+          "label": "Legal entries on title: Klassifizierung nach Wasserrecht — Gewässer II. Ordnung",
+          "severity": "medium"
+        },
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 0,
+        "utilization_gap": 4,
+        "renovation_neglect": 0,
+        "heating_distress": 2,
+        "age_bonus": 2,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "renovation history"
+      ]
+    },
+    "STG-000200": {
+      "object_id": "STG-000200",
+      "flurstueckskennzeichen": "08146000001368000200",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 11,
+      "ticket_range": "1.776.500 € – 2.403.500 €",
+      "ticket_low": 1776500,
+      "ticket_high": 2403500,
+      "leading_signal": "Volume gap signal (4 pts)",
+      "parcel_m2": 5342,
+      "land_use": "Gartenbauland; Straßenverkehr; Weg",
+      "built_gfa": 950,
+      "allowed_gfa": 2137,
+      "centroid_x": 514162.7433027523,
+      "centroid_y": 5403413.759174315,
+      "address_hidden": true,
+      "address_full": "Werastraße 65B",
+      "strategy_fit": "Residential land use with 5.342 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 44% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "likely oil heating — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        },
+        {
+          "weakness": "Building era ~1953 — layout and building services likely dated.",
+          "upside": "Core-and-shell refresh unlocks contemporary layouts and higher €/m² on exit or rent roll."
+        }
+      ],
+      "values": {
+        "today": 2090000,
+        "today_label": "2.090.000 €",
+        "after": 7182000,
+        "after_label": "7.182.000 €",
+        "upside_range": "3.296.500 € – 8.167.600 €",
+        "upside_low": 3296500,
+        "upside_high": 8167600
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        },
+        {
+          "label": "Multiple easements / infrastructure on parcel — check buildability.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 0,
+        "utilization_gap": 4,
+        "renovation_neglect": 0,
+        "heating_distress": 4,
+        "age_bonus": 0,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "renovation history"
+      ]
+    },
+    "STG-000601": {
+      "object_id": "STG-000601",
+      "flurstueckskennzeichen": "08146000006731000601",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Industrial",
+      "district": "Stuttgart · Dantestraße",
+      "municipality": "Stuttgart",
+      "score": 17,
+      "ticket_range": "2.108.680 € – 2.852.920 €",
+      "ticket_low": 2108680,
+      "ticket_high": 2852920,
+      "leading_signal": "Floor upside signal (6 pts)",
+      "parcel_m2": 2421,
+      "land_use": "Gebäude- und Freifläche Industrie und Gewerbe",
+      "built_gfa": 886,
+      "allowed_gfa": 2905,
+      "centroid_x": 510217.0170833333,
+      "centroid_y": 5401657.281250001,
+      "address_hidden": true,
+      "address_full": "Unter dem Birkenkopf",
+      "strategy_fit": "Residential land use with 2.421 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 30% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "Built 1 floor(s) where zoning allows 4.",
+          "upside": "Additional storeys convert zoning headroom into leasable area without land purchase."
+        },
+        {
+          "weakness": "old gas heating likely — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        }
+      ],
+      "values": {
+        "today": 2480800,
+        "today_label": "2.480.800 €",
+        "after": 6698160,
+        "after_label": "6.698.160 €",
+        "upside_range": "2.542.820 € – 11.463.200 €",
+        "upside_low": 2542820,
+        "upside_high": 11463200
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 6,
+        "utilization_gap": 6,
+        "renovation_neglect": 0,
+        "heating_distress": 2,
+        "age_bonus": 0,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "construction year",
+        "renovation history"
+      ]
+    },
+    "STG-000101": {
+      "object_id": "STG-000101",
+      "flurstueckskennzeichen": "08146000010135000101",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart · Schönbühlstraße",
+      "municipality": "Stuttgart",
+      "score": 11,
+      "ticket_range": "2.152.370 € – 2.912.030 €",
+      "ticket_low": 2152370,
+      "ticket_high": 2912030,
+      "leading_signal": "Volume gap signal (4 pts)",
+      "parcel_m2": 5432,
+      "land_use": "Gartenbauland; Straßenverkehr",
+      "built_gfa": 1151,
+      "allowed_gfa": 2173,
+      "centroid_x": 515013.3108730158,
+      "centroid_y": 5403378.934761906,
+      "address_hidden": true,
+      "address_full": "Kniebisstraße",
+      "strategy_fit": "Residential land use with 5.432 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 53% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "likely oil heating — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        },
+        {
+          "weakness": "Building era ~1953 — layout and building services likely dated.",
+          "upside": "Core-and-shell refresh unlocks contemporary layouts and higher €/m² on exit or rent roll."
+        }
+      ],
+      "values": {
+        "today": 2532200,
+        "today_label": "2.532.200 €",
+        "after": 8701560,
+        "after_label": "8.701.560 €",
+        "upside_range": "3.993.970 € – 7.898.200 €",
+        "upside_low": 3993970,
+        "upside_high": 7898200
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 0,
+        "utilization_gap": 4,
+        "renovation_neglect": 0,
+        "heating_distress": 4,
+        "age_bonus": 0,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "renovation history"
+      ]
+    },
+    "STG-002100": {
+      "object_id": "STG-002100",
+      "flurstueckskennzeichen": "08146000006491002100",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 14,
+      "ticket_range": "1.451.120 € – 1.963.280 €",
+      "ticket_low": 1451120,
+      "ticket_high": 1963280,
+      "leading_signal": "Volume gap signal (6 pts)",
+      "parcel_m2": 1764,
+      "land_use": "Wohnbaufläche",
+      "built_gfa": 776,
+      "allowed_gfa": 2117,
+      "centroid_x": 511728.5994444444,
+      "centroid_y": 5401881.905,
+      "address_hidden": true,
+      "address_full": "Reuchlinstraße 17B",
+      "strategy_fit": "Residential land use with 1.764 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 37% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "Built 2 floor(s) where zoning allows 3.",
+          "upside": "Additional storeys convert zoning headroom into leasable area without land purchase."
+        },
+        {
+          "weakness": "likely oil heating — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        },
+        {
+          "weakness": "Building era ~1889 — layout and building services likely dated.",
+          "upside": "Core-and-shell refresh unlocks contemporary layouts and higher €/m² on exit or rent roll."
+        }
+      ],
+      "values": {
+        "today": 1707200,
+        "today_label": "1.707.200 €",
+        "after": 5866560,
+        "after_label": "5.866.560 €",
+        "upside_range": "2.692.720 € – 8.454.400 €",
+        "upside_low": 2692720,
+        "upside_high": 8454400
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        },
+        {
+          "label": "Multiple easements / infrastructure on parcel — check buildability.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 1,
+        "utilization_gap": 6,
+        "renovation_neglect": 0,
+        "heating_distress": 4,
+        "age_bonus": 0,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "renovation history"
+      ]
+    },
+    "STG-000001": {
+      "object_id": "STG-000001",
+      "flurstueckskennzeichen": "08146600002682000001",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 12,
+      "ticket_range": "1.366.120 € – 1.848.280 €",
+      "ticket_low": 1366120,
+      "ticket_high": 1848280,
+      "leading_signal": "Volume gap signal (6 pts)",
+      "parcel_m2": 2013,
+      "land_use": null,
+      "built_gfa": 574,
+      "allowed_gfa": 2416,
+      "centroid_x": 516625.05,
+      "centroid_y": 5398493.238,
+      "address_hidden": true,
+      "address_full": "Kirchheimer Straße 144A",
+      "strategy_fit": "Residential land use with 2.013 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 24% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "Built 2 floor(s) where zoning allows 3.",
+          "upside": "Additional storeys convert zoning headroom into leasable area without land purchase."
+        },
+        {
+          "weakness": "old gas heating likely — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        }
+      ],
+      "values": {
+        "today": 1607200,
+        "today_label": "1.607.200 €",
+        "after": 4339440,
+        "after_label": "4.339.440 €",
+        "upside_range": "1.647.380 € – 9.989.600 €",
+        "upside_low": 1647380,
+        "upside_high": 9989600
+      },
+      "risks": [
+        {
+          "label": "Legal entries on title: Sonstiges Recht — Jagdkataster — Jagdbezirk Stuttgart",
+          "severity": "medium"
+        },
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 1,
+        "utilization_gap": 6,
+        "renovation_neglect": 0,
+        "heating_distress": 2,
+        "age_bonus": 0,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "construction year",
+        "renovation history"
+      ]
+    },
+    "STG-002900": {
+      "object_id": "STG-002900",
+      "flurstueckskennzeichen": "08146000010609002900",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 15,
+      "ticket_range": "1.661.240 € – 2.247.560 €",
+      "ticket_low": 1661240,
+      "ticket_high": 2247560,
+      "leading_signal": "Volume gap signal (6 pts)",
+      "parcel_m2": 1636,
+      "land_use": null,
+      "built_gfa": 698,
+      "allowed_gfa": 1963,
+      "centroid_x": 516213.4461290322,
+      "centroid_y": 5403610.1367741935,
+      "address_hidden": true,
+      "address_full": "Von-Pistorius-Straße",
+      "strategy_fit": "Residential land use with 1.636 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 36% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "Built 2 floor(s) where zoning allows 4.",
+          "upside": "Additional storeys convert zoning headroom into leasable area without land purchase."
+        },
+        {
+          "weakness": "old gas heating likely — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        }
+      ],
+      "values": {
+        "today": 1954400,
+        "today_label": "1.954.400 €",
+        "after": 5276880,
+        "after_label": "5.276.880 €",
+        "upside_range": "2.003.260 € – 7.468.000 €",
+        "upside_low": 2003260,
+        "upside_high": 7468000
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 4,
+        "utilization_gap": 6,
+        "renovation_neglect": 0,
+        "heating_distress": 2,
+        "age_bonus": 0,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "construction year",
+        "renovation history"
+      ]
+    },
+    "STG-002800": {
+      "object_id": "STG-002800",
+      "flurstueckskennzeichen": "08146000006730002800",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 15,
+      "ticket_range": "2.867.900 € – 3.880.100 €",
+      "ticket_low": 2867900,
+      "ticket_high": 3880100,
+      "leading_signal": "Floor upside signal (6 pts)",
+      "parcel_m2": 2054,
+      "land_use": null,
+      "built_gfa": 1205,
+      "allowed_gfa": 2465,
+      "centroid_x": 510564.59266666655,
+      "centroid_y": 5401777.033333333,
+      "address_hidden": true,
+      "address_full": "Am Stellwerk",
+      "strategy_fit": "Residential land use with 2.054 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 49% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "Built 1 floor(s) where zoning allows 4.",
+          "upside": "Additional storeys convert zoning headroom into leasable area without land purchase."
+        },
+        {
+          "weakness": "old gas heating likely — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        }
+      ],
+      "values": {
+        "today": 3374000,
+        "today_label": "3.374.000 €",
+        "after": 9109800,
+        "after_label": "9.109.800 €",
+        "upside_range": "3.458.350 € – 8.458.000 €",
+        "upside_low": 3458350,
+        "upside_high": 8458000
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        },
+        {
+          "label": "Multiple easements / infrastructure on parcel — check buildability.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 6,
+        "utilization_gap": 4,
+        "renovation_neglect": 0,
+        "heating_distress": 2,
+        "age_bonus": 0,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "construction year",
+        "renovation history"
+      ]
+    },
+    "STG-002000": {
+      "object_id": "STG-002000",
+      "flurstueckskennzeichen": "8146000007134002000",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Industrial",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 15,
+      "ticket_range": "1.647.470 € – 2.228.930 €",
+      "ticket_low": 1647470,
+      "ticket_high": 2228930,
+      "leading_signal": "Floor upside signal (4 pts)",
+      "parcel_m2": 1831,
+      "land_use": "Gebäude- und Freifläche Industrie und Gewerbe",
+      "built_gfa": 881,
+      "allowed_gfa": 2197,
+      "centroid_x": 510132.7078947369,
+      "centroid_y": 5401688.601052632,
+      "address_hidden": true,
+      "address_full": "Unter dem Birkenkopf",
+      "strategy_fit": "Residential land use with 1.831 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 40% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "Built 2 floor(s) where zoning allows 4.",
+          "upside": "Additional storeys convert zoning headroom into leasable area without land purchase."
+        },
+        {
+          "weakness": "likely oil heating — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        },
+        {
+          "weakness": "Building era ~1935 — layout and building services likely dated.",
+          "upside": "Core-and-shell refresh unlocks contemporary layouts and higher €/m² on exit or rent roll."
+        }
+      ],
+      "values": {
+        "today": 1938200,
+        "today_label": "1.938.200 €",
+        "after": 6660360,
+        "after_label": "6.660.360 €",
+        "upside_range": "3.057.070 € – 8.607.400 €",
+        "upside_low": 3057070,
+        "upside_high": 8607400
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 4,
+        "utilization_gap": 4,
+        "renovation_neglect": 0,
+        "heating_distress": 4,
+        "age_bonus": 0,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "renovation history"
+      ]
+    },
+    "STG-000002": {
+      "object_id": "STG-000002",
+      "flurstueckskennzeichen": "08147700000444000002",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 11,
+      "ticket_range": "1.344.700 € – 1.819.300 €",
+      "ticket_low": 1344700,
+      "ticket_high": 1819300,
+      "leading_signal": "Volume gap signal (4 pts)",
+      "parcel_m2": 3521,
+      "land_use": "Gartenbauland; Wohnbaufläche",
+      "built_gfa": 565,
+      "allowed_gfa": 1408,
+      "centroid_x": 520721.8966666667,
+      "centroid_y": 5402615.777500001,
+      "address_hidden": true,
+      "address_full": "Luise-Benger-Straße",
+      "strategy_fit": "Residential land use with 3.521 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 40% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "old gas heating likely — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        },
+        {
+          "weakness": "Plot 3.521 m² — footprint may under-use the land.",
+          "upside": "Larger plot enables yard infill, secondary volume, or phased development within one title."
+        }
+      ],
+      "values": {
+        "today": 1582000,
+        "today_label": "1.582.000 €",
+        "after": 4271400,
+        "after_label": "4.271.400 €",
+        "upside_range": "1.621.550 € – 5.176.400 €",
+        "upside_low": 1621550,
+        "upside_high": 5176400
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 0,
+        "utilization_gap": 4,
+        "renovation_neglect": 0,
+        "heating_distress": 2,
+        "age_bonus": 2,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "renovation history"
+      ]
+    },
+    "STG-004700": {
+      "object_id": "STG-004700",
+      "flurstueckskennzeichen": "08146800007000004700",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 12,
+      "ticket_range": "3.500.640 € – 4.736.160 €",
+      "ticket_low": 3500640,
+      "ticket_high": 4736160,
+      "leading_signal": "Volume gap signal (4 pts)",
+      "parcel_m2": 10757,
+      "land_use": "Grünanlage; Wohnbaufläche",
+      "built_gfa": 1872,
+      "allowed_gfa": 4303,
+      "centroid_x": 511392.12978947366,
+      "centroid_y": 5395752.141684211,
+      "address_hidden": true,
+      "address_full": "Solferinoweg 13F",
+      "strategy_fit": "Residential land use with 10.757 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 44% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "old gas heating likely — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        },
+        {
+          "weakness": "Building era ~1963 — layout and building services likely dated.",
+          "upside": "Core-and-shell refresh unlocks contemporary layouts and higher €/m² on exit or rent roll."
+        }
+      ],
+      "values": {
+        "today": 4118400,
+        "today_label": "4.118.400 €",
+        "after": 14152320,
+        "after_label": "14.152.320 €",
+        "upside_range": "6.495.840 € – 16.536.000 €",
+        "upside_low": 6495840,
+        "upside_high": 16536000
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        },
+        {
+          "label": "Multiple easements / infrastructure on parcel — check buildability.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 0,
+        "utilization_gap": 4,
+        "renovation_neglect": 0,
+        "heating_distress": 2,
+        "age_bonus": 3,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "renovation history"
+      ]
+    },
+    "STG-001000": {
+      "object_id": "STG-001000",
+      "flurstueckskennzeichen": "8146000007853001000",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 12,
+      "ticket_range": "1.062.160 € – 1.437.040 €",
+      "ticket_low": 1062160,
+      "ticket_high": 1437040,
+      "leading_signal": "Volume gap signal (4 pts)",
+      "parcel_m2": 1001,
+      "land_use": "Wohnbaufläche",
+      "built_gfa": 568,
+      "allowed_gfa": 1201,
+      "centroid_x": 511922.48416666663,
+      "centroid_y": 5402804.203333334,
+      "address_hidden": true,
+      "address_full": "Lindenspürstraße",
+      "strategy_fit": "Residential land use with 1.001 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 47% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "Built 2 floor(s) where zoning allows 3.",
+          "upside": "Additional storeys convert zoning headroom into leasable area without land purchase."
+        },
+        {
+          "weakness": "old gas heating likely — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        },
+        {
+          "weakness": "Building era ~1963 — layout and building services likely dated.",
+          "upside": "Core-and-shell refresh unlocks contemporary layouts and higher €/m² on exit or rent roll."
+        }
+      ],
+      "values": {
+        "today": 1249600,
+        "today_label": "1.249.600 €",
+        "after": 4294080,
+        "after_label": "4.294.080 €",
+        "upside_range": "1.970.960 € – 4.515.200 €",
+        "upside_low": 1970960,
+        "upside_high": 4515200
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 1,
+        "utilization_gap": 4,
+        "renovation_neglect": 0,
+        "heating_distress": 2,
+        "age_bonus": 3,
+        "parcel_bonus": 2
+      },
+      "data_gaps": [
+        "renovation history"
+      ]
+    },
+    "STG-000500": {
+      "object_id": "STG-000500",
+      "flurstueckskennzeichen": "08146000008259000500",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 9,
+      "ticket_range": "1.950.410 € – 2.638.790 €",
+      "ticket_low": 1950410,
+      "ticket_high": 2638790,
+      "leading_signal": "Heating signal (4 pts)",
+      "parcel_m2": 4044,
+      "land_use": "Gartenbauland; Wohnbaufläche",
+      "built_gfa": 1043,
+      "allowed_gfa": 1618,
+      "centroid_x": 511336.2513333333,
+      "centroid_y": 5403998.522000001,
+      "address_hidden": true,
+      "address_full": "Feuerbacher Heide",
+      "strategy_fit": "Residential land use with 4.044 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 64% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "likely oil heating — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        },
+        {
+          "weakness": "Building era ~1953 — layout and building services likely dated.",
+          "upside": "Core-and-shell refresh unlocks contemporary layouts and higher €/m² on exit or rent roll."
+        }
+      ],
+      "values": {
+        "today": 2294600,
+        "today_label": "2.294.600 €",
+        "after": 6795600,
+        "after_label": "6.795.600 €",
+        "upside_range": "2.802.100 € – 5.471.800 €",
+        "upside_low": 2802100,
+        "upside_high": 5471800
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        },
+        {
+          "label": "Multiple easements / infrastructure on parcel — check buildability.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 0,
+        "utilization_gap": 2,
+        "renovation_neglect": 0,
+        "heating_distress": 4,
+        "age_bonus": 0,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "renovation history"
+      ]
+    },
+    "STG-000700": {
+      "object_id": "STG-000700",
+      "flurstueckskennzeichen": "08146000009535000700",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 11,
+      "ticket_range": "1.019.150 € – 1.378.850 €",
+      "ticket_low": 1019150,
+      "ticket_high": 1378850,
+      "leading_signal": "Volume gap signal (4 pts)",
+      "parcel_m2": 3178,
+      "land_use": "Wohnbaufläche",
+      "built_gfa": 545,
+      "allowed_gfa": 1271,
+      "centroid_x": 512190.575,
+      "centroid_y": 5404676.024999999,
+      "address_hidden": true,
+      "address_full": "Feuerbacher Weg",
+      "strategy_fit": "Residential land use with 3.178 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 43% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "likely oil heating — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        },
+        {
+          "weakness": "Building era ~1935 — layout and building services likely dated.",
+          "upside": "Core-and-shell refresh unlocks contemporary layouts and higher €/m² on exit or rent roll."
+        }
+      ],
+      "values": {
+        "today": 1199000,
+        "today_label": "1.199.000 €",
+        "after": 4120200,
+        "after_label": "4.120.200 €",
+        "upside_range": "1.891.150 € – 4.901.800 €",
+        "upside_low": 1891150,
+        "upside_high": 4901800
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 0,
+        "utilization_gap": 4,
+        "renovation_neglect": 0,
+        "heating_distress": 4,
+        "age_bonus": 0,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "renovation history"
+      ]
+    },
+    "STG-000501": {
+      "object_id": "STG-000501",
+      "flurstueckskennzeichen": "08147200003557000501",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Industrial",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 14,
+      "ticket_range": "2.667.980 € – 3.609.620 €",
+      "ticket_low": 2667980,
+      "ticket_high": 3609620,
+      "leading_signal": "Volume gap signal (6 pts)",
+      "parcel_m2": 2422,
+      "land_use": "Gebäude- und Freifläche Industrie und Gewerbe; Unland/Vegetationslose Fläche",
+      "built_gfa": 1121,
+      "allowed_gfa": 2906,
+      "centroid_x": 515037.24821428576,
+      "centroid_y": 5394555.3335714275,
+      "address_hidden": true,
+      "address_full": "Fraubronnstraße 52/1",
+      "strategy_fit": "Residential land use with 2.422 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 39% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "Built 2 floor(s) where zoning allows 3.",
+          "upside": "Additional storeys convert zoning headroom into leasable area without land purchase."
+        },
+        {
+          "weakness": "old gas heating likely — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        }
+      ],
+      "values": {
+        "today": 3138800,
+        "today_label": "3.138.800 €",
+        "after": 8474760,
+        "after_label": "8.474.760 €",
+        "upside_range": "3.217.270 € – 10.810.000 €",
+        "upside_low": 3217270,
+        "upside_high": 10810000
+      },
+      "risks": [
+        {
+          "label": "Legal entries on title: Sonstiges Recht — Jagdkataster — Jagdbezirk Stuttgart",
+          "severity": "medium"
+        },
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        },
+        {
+          "label": "Multiple easements / infrastructure on parcel — check buildability.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 1,
+        "utilization_gap": 6,
+        "renovation_neglect": 0,
+        "heating_distress": 2,
+        "age_bonus": 2,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "renovation history"
+      ]
+    },
+    "STG-000800": {
+      "object_id": "STG-000800",
+      "flurstueckskennzeichen": "08146800003165000800",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 14,
+      "ticket_range": "1.365.100 € – 1.846.900 €",
+      "ticket_low": 1365100,
+      "ticket_high": 1846900,
+      "leading_signal": "Volume gap signal (6 pts)",
+      "parcel_m2": 2162,
+      "land_use": null,
+      "built_gfa": 730,
+      "allowed_gfa": 2594,
+      "centroid_x": 510680.12066666665,
+      "centroid_y": 5397306.757999999,
+      "address_hidden": true,
+      "address_full": "Balinger Straße",
+      "strategy_fit": "Residential land use with 2.162 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 28% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "Built 2 floor(s) where zoning allows 3.",
+          "upside": "Additional storeys convert zoning headroom into leasable area without land purchase."
+        },
+        {
+          "weakness": "likely oil heating — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        },
+        {
+          "weakness": "Building era ~1889 — layout and building services likely dated.",
+          "upside": "Core-and-shell refresh unlocks contemporary layouts and higher €/m² on exit or rent roll."
+        }
+      ],
+      "values": {
+        "today": 1606000,
+        "today_label": "1.606.000 €",
+        "after": 5518800,
+        "after_label": "5.518.800 €",
+        "upside_range": "2.533.100 € – 10.845.200 €",
+        "upside_low": 2533100,
+        "upside_high": 10845200
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 1,
+        "utilization_gap": 6,
+        "renovation_neglect": 0,
+        "heating_distress": 4,
+        "age_bonus": 0,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "renovation history"
+      ]
+    },
+    "STG-001400": {
+      "object_id": "STG-001400",
+      "flurstueckskennzeichen": "08146000001459001400",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 13,
+      "ticket_range": "1.221.110 € – 1.652.090 €",
+      "ticket_low": 1221110,
+      "ticket_high": 1652090,
+      "leading_signal": "Volume gap signal (6 pts)",
+      "parcel_m2": 4385,
+      "land_use": "Gartenbauland",
+      "built_gfa": 653,
+      "allowed_gfa": 1754,
+      "centroid_x": 514490.0917391304,
+      "centroid_y": 5403321.284782609,
+      "address_hidden": true,
+      "address_full": "Zur Uhlandshöhe",
+      "strategy_fit": "Residential land use with 4.385 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 37% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "likely oil heating — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        },
+        {
+          "weakness": "Building era ~1935 — layout and building services likely dated.",
+          "upside": "Core-and-shell refresh unlocks contemporary layouts and higher €/m² on exit or rent roll."
+        }
+      ],
+      "values": {
+        "today": 1436600,
+        "today_label": "1.436.600 €",
+        "after": 4936680,
+        "after_label": "4.936.680 €",
+        "upside_range": "2.265.910 € – 6.982.600 €",
+        "upside_low": 2265910,
+        "upside_high": 6982600
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        },
+        {
+          "label": "Multiple easements / infrastructure on parcel — check buildability.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 0,
+        "utilization_gap": 6,
+        "renovation_neglect": 0,
+        "heating_distress": 4,
+        "age_bonus": 0,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "renovation history"
+      ]
+    },
+    "STG-000401": {
+      "object_id": "STG-000401",
+      "flurstueckskennzeichen": "08147200000526000401",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 10,
+      "ticket_range": "2.094.400 € – 2.833.600 €",
+      "ticket_low": 2094400,
+      "ticket_high": 2833600,
+      "leading_signal": "Volume gap signal (6 pts)",
+      "parcel_m2": 2254,
+      "land_use": "Wohnbaufläche",
+      "built_gfa": 880,
+      "allowed_gfa": 2705,
+      "centroid_x": 516254.4368,
+      "centroid_y": 5394668.972,
+      "address_hidden": true,
+      "address_full": "Scharnhauser Straße 70/1",
+      "strategy_fit": "Residential land use with 2.254 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 33% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "Built 2 floor(s) where zoning allows 3.",
+          "upside": "Additional storeys convert zoning headroom into leasable area without land purchase."
+        },
+        {
+          "weakness": "modern heating — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        }
+      ],
+      "values": {
+        "today": 2464000,
+        "today_label": "2.464.000 €",
+        "after": 6652800,
+        "after_label": "6.652.800 €",
+        "upside_range": "2.525.600 € – 10.520.000 €",
+        "upside_low": 2525600,
+        "upside_high": 10520000
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 1,
+        "utilization_gap": 6,
+        "renovation_neglect": 0,
+        "heating_distress": 0,
+        "age_bonus": 0,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "construction year",
+        "renovation history"
+      ]
+    },
+    "STG-000600": {
+      "object_id": "STG-000600",
+      "flurstueckskennzeichen": "08146000006397000600",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 10,
+      "ticket_range": "2.288.880 € – 3.096.720 €",
+      "ticket_low": 2288880,
+      "ticket_high": 3096720,
+      "leading_signal": "Heating signal (4 pts)",
+      "parcel_m2": 1727,
+      "land_use": "Wohnbaufläche; Öffentliche Zwecke",
+      "built_gfa": 1224,
+      "allowed_gfa": 2072,
+      "centroid_x": 511530.8347058823,
+      "centroid_y": 5401993.211176471,
+      "address_hidden": true,
+      "address_full": "Rotebühlstraße 108A",
+      "strategy_fit": "Residential land use with 1.727 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 59% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "Built 2 floor(s) where zoning allows 3.",
+          "upside": "Additional storeys convert zoning headroom into leasable area without land purchase."
+        },
+        {
+          "weakness": "likely oil heating — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        },
+        {
+          "weakness": "Building era ~1889 — layout and building services likely dated.",
+          "upside": "Core-and-shell refresh unlocks contemporary layouts and higher €/m² on exit or rent roll."
+        }
+      ],
+      "values": {
+        "today": 2692800,
+        "today_label": "2.692.800 €",
+        "after": 8702400,
+        "after_label": "8.702.400 €",
+        "upside_range": "3.834.000 € – 7.252.800 €",
+        "upside_low": 3834000,
+        "upside_high": 7252800
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 1,
+        "utilization_gap": 2,
+        "renovation_neglect": 0,
+        "heating_distress": 4,
+        "age_bonus": 0,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "renovation history"
+      ]
+    },
+    "STG-000300": {
+      "object_id": "STG-000300",
+      "flurstueckskennzeichen": "08147200002632000300",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 11,
+      "ticket_range": "3.401.020 € – 4.601.380 €",
+      "ticket_low": 3401020,
+      "ticket_high": 4601380,
+      "leading_signal": "Volume gap signal (6 pts)",
+      "parcel_m2": 6040,
+      "land_use": null,
+      "built_gfa": 1429,
+      "allowed_gfa": 7248,
+      "centroid_x": 515803.71916666673,
+      "centroid_y": 5393934.323333333,
+      "address_hidden": true,
+      "address_full": "Bernhauser Straße",
+      "strategy_fit": "Residential land use with 6.040 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 20% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "old gas heating likely — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        },
+        {
+          "weakness": "Plot 6.040 m² — footprint may under-use the land.",
+          "upside": "Larger plot enables yard infill, secondary volume, or phased development within one title."
+        }
+      ],
+      "values": {
+        "today": 4001200,
+        "today_label": "4.001.200 €",
+        "after": 10803240,
+        "after_label": "10.803.240 €",
+        "upside_range": "4.101.230 € – 30.789.200 €",
+        "upside_low": 4101230,
+        "upside_high": 30789200
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 0,
+        "utilization_gap": 6,
+        "renovation_neglect": 0,
+        "heating_distress": 2,
+        "age_bonus": 0,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "construction year",
+        "renovation history"
+      ]
+    },
+    "STG-001200": {
+      "object_id": "STG-001200",
+      "flurstueckskennzeichen": "08146000003350001200",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 9,
+      "ticket_range": "1.224.850 € – 1.657.150 €",
+      "ticket_low": 1224850,
+      "ticket_high": 1657150,
+      "leading_signal": "Heating signal (4 pts)",
+      "parcel_m2": 2599,
+      "land_use": "Gartenbauland; Wohnbaufläche",
+      "built_gfa": 655,
+      "allowed_gfa": 1040,
+      "centroid_x": 513151.0555172413,
+      "centroid_y": 5401314.891724137,
+      "address_hidden": true,
+      "address_full": "Neue Weinsteige",
+      "strategy_fit": "Residential land use with 2.599 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 63% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "likely oil heating — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        },
+        {
+          "weakness": "Building era ~1889 — layout and building services likely dated.",
+          "upside": "Core-and-shell refresh unlocks contemporary layouts and higher €/m² on exit or rent roll."
+        }
+      ],
+      "values": {
+        "today": 1441000,
+        "today_label": "1.441.000 €",
+        "after": 4368000,
+        "after_label": "4.368.000 €",
+        "upside_range": "1.835.000 € – 3.551.000 €",
+        "upside_low": 1835000,
+        "upside_high": 3551000
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 0,
+        "utilization_gap": 2,
+        "renovation_neglect": 0,
+        "heating_distress": 4,
+        "age_bonus": 0,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "renovation history"
+      ]
+    },
+    "STG-000900": {
+      "object_id": "STG-000900",
+      "flurstueckskennzeichen": "08146000003173000900",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 9,
+      "ticket_range": "1.110.780 € – 1.502.820 €",
+      "ticket_low": 1110780,
+      "ticket_high": 1502820,
+      "leading_signal": "Heating signal (4 pts)",
+      "parcel_m2": 2396,
+      "land_use": "Gartenbauland; Wohnbaufläche",
+      "built_gfa": 594,
+      "allowed_gfa": 958,
+      "centroid_x": 513693.75363636366,
+      "centroid_y": 5401351.456363637,
+      "address_hidden": true,
+      "address_full": "Rottannenweg",
+      "strategy_fit": "Residential land use with 2.396 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 62% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "likely oil heating — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        },
+        {
+          "weakness": "Building era ~1953 — layout and building services likely dated.",
+          "upside": "Core-and-shell refresh unlocks contemporary layouts and higher €/m² on exit or rent roll."
+        }
+      ],
+      "values": {
+        "today": 1306800,
+        "today_label": "1.306.800 €",
+        "after": 4023600,
+        "after_label": "4.023.600 €",
+        "upside_range": "1.710.900 € – 3.291.600 €",
+        "upside_low": 1710900,
+        "upside_high": 3291600
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 0,
+        "utilization_gap": 2,
+        "renovation_neglect": 0,
+        "heating_distress": 4,
+        "age_bonus": 0,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "renovation history"
+      ]
+    },
+    "STG-001600": {
+      "object_id": "STG-001600",
+      "flurstueckskennzeichen": "08146000008332001600",
+      "strategy_id": "buy_hold",
+      "strategy_label": "Buy & Hold",
+      "asset_type": "Residential",
+      "district": "Stuttgart",
+      "municipality": "Stuttgart",
+      "score": 9,
+      "ticket_range": "1.026.630 € – 1.388.970 €",
+      "ticket_low": 1026630,
+      "ticket_high": 1388970,
+      "leading_signal": "Heating signal (4 pts)",
+      "parcel_m2": 2150,
+      "land_use": "Gartenbauland; Wohnbaufläche",
+      "built_gfa": 549,
+      "allowed_gfa": 860,
+      "centroid_x": 512001.2342105264,
+      "centroid_y": 5404299.466842106,
+      "address_hidden": true,
+      "address_full": "Gähkopf",
+      "strategy_fit": "Residential land use with 2.150 m² plot supports stable income; upside comes from gradual rent catch-up after capex rather than a quick flip.",
+      "weakness_upside": [
+        {
+          "weakness": "Only 64% of allowed building volume is used today.",
+          "upside": "Low utilization leaves room to add floors or GFA within existing zoning — direct NAV uplift."
+        },
+        {
+          "weakness": "likely oil heating — capex and regulatory pressure ahead.",
+          "upside": "Modern heating and insulation support rent increases and lower void risk over a long hold."
+        },
+        {
+          "weakness": "Building era ~1935 — layout and building services likely dated.",
+          "upside": "Core-and-shell refresh unlocks contemporary layouts and higher €/m² on exit or rent roll."
+        }
+      ],
+      "values": {
+        "today": 1207800,
+        "today_label": "1.207.800 €",
+        "after": 3612000,
+        "after_label": "3.612.000 €",
+        "upside_range": "1.501.200 € – 2.920.200 €",
+        "upside_low": 1501200,
+        "upside_high": 2920200
+      },
+      "risks": [
+        {
+          "label": "Renovation history unverified — capex budget may shift after site visit.",
+          "severity": "medium"
+        }
+      ],
+      "score_breakdown": {
+        "floor_upside": 0,
+        "utilization_gap": 2,
+        "renovation_neglect": 0,
+        "heating_distress": 4,
+        "age_bonus": 0,
+        "parcel_bonus": 3
+      },
+      "data_gaps": [
+        "renovation history"
+      ]
+    }
+  }
+}

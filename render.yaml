@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: antberg-platform
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build:deploy
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: ANTBERG_ACCESS_TOKEN
+        generateValue: true

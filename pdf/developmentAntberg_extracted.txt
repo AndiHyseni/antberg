@@ -1,0 +1,257 @@
+﻿--- PAGE 1 ---
+OFF-MARKET REDEVELOPMENT FINDER
+Region Stuttgart ÔÇö Underappreciated Asset Scoring Model
+1. Target Geography
+Developer must search only in:
+ÔÇó
+Stuttgart
+ÔÇó
+Ludwigsburg
+ÔÇó
+Esslingen
+ÔÇó
+B├Âblingen
+ÔÇó
+Rems-Murr-Kreis
+ÔÇó
+G├Âppingen
+Priority municipalities
+ÔÇó
+Waiblingen
+ÔÇó
+Weinstadt (Endersbach focus)
+ÔÇó
+Filderstadt
+2. HARD FILTER (Immediate Elimination)
+Remove property if:
+ÔÇó
+heritage protected
+ÔÇó
+zoning does not allow meaningful densification
+ÔÇó
+building already uses ÔëÑ75% of allowed volume
+ÔÇó
+major renovation in last 15ÔÇô20 years
+ÔÇó
+parcel < 800 m┬▓
+Only surviving objects go into scoring.
+3. REQUIRED DATA FIELDS
+Developer must collect:
+Parcel
+ÔÇó
+parcel number (Flurst├╝ck)
+
+--- PAGE 2 ---
+ÔÇó
+parcel size
+ÔÇó
+coordinates
+Building
+ÔÇó
+footprint
+ÔÇó
+floors built
+ÔÇó
+construction year
+ÔÇó
+renovation history
+Zoning
+ÔÇó
+zoning category
+ÔÇó
+GFZ (floor area ratio)
+ÔÇó
+allowed floors
+Heating / Energy
+ÔÇó
+heating type
+ÔÇó
+energy class
+ÔÇó
+heating modernization permits
+4. WHERE TO GET THE DATA (IMPORTANT)
+Parcel + Zoning + Buildings (Government GIS)
+Developer must use:
+ÔÇó
+BORIS-BW (land value + parcel layers)
+ÔÇó
+Geoportal Stuttgart
+ÔÇó
+Geoportal Landkreis Ludwigsburg
+ÔÇó
+Geoportal Landkreis Esslingen
+ÔÇó
+Geoportal Rems-Murr-Kreis
+ÔÇó
+Geoportal Landkreis B├Âblingen
+ÔÇó
+Geoportal Landkreis G├Âppingen
+From these portals extract:
+ÔÇó
+parcel boundaries
+ÔÇó
+parcel size
+ÔÇó
+zoning polygons
+ÔÇó
+building footprints
+ÔÇó
+sometimes building height
+
+--- PAGE 3 ---
+Bebauungsplan Documents
+Search on municipality websites:
+ ÔÇ£Bebauungsplan + street nameÔÇØ
+Extract:
+ÔÇó
+GFZ
+ÔÇó
+GRZ
+ÔÇó
+allowed floors
+ÔÇó
+density rules
+Heating / Renovation Signals (Government Sources)
+Developer should check:
+ÔÇó
+municipal W├ñrmeplanung portals
+ÔÇó
+Stuttgart W├ñrmeatlas
+ÔÇó
+district heating network maps (e.g. Stuttgart Netze / EnBW)
+ÔÇó
+Baugesuch portals (search: ÔÇ£Baugesuche + municipalityÔÇØ)
+ÔÇó
+environmental or energy transition reports
+These help detect:
+ÔÇó
+oil heating probability
+ÔÇó
+gas dependency
+ÔÇó
+modernization absence
+Optional Supporting Sources
+ÔÇó
+archived listings (Immobilienscout24, Immowelt)
+ÔÇó
+broker expos├®s
+ÔÇó
+EPC references
+5. SCORING MODEL (Only What Matters)
+Each property gets a Redevelopment Opportunity Score.
+A. FLOOR UPSIDE SCORE (Very Important)
+Calculate:
+
+--- PAGE 4 ---
+floor_gap = allowed_floors ÔÇô built_floors
+Score:
+ÔÇó
+gap ÔëÑ3 floors ÔåÆ +6
+ÔÇó
+gap =2 floors ÔåÆ +4
+ÔÇó
+gap =1 floor ÔåÆ +1
+This is the strongest signal.
+LOGIC: An Object that has 2 floors, but that zone is for 5 floors. This is a typical +6 
+scenario.
+B. UTILIZATION GAP SCORE (Very Important)
+Calculate:
+utilization_ratio = built_gfa / allowed_gfa
+Score:
+ÔÇó
+Ôëñ40% used ÔåÆ +6
+ÔÇó
+41ÔÇô55% used ÔåÆ +4
+ÔÇó
+56ÔÇô65% used ÔåÆ +2
+If >65% ÔåÆ weak candidate.
+LOGIC: Parcel size: 1,200 m┬▓
+Allowed floor area (GFZ): 2,400 m┬▓
+Existing building floor area: 800 m┬▓
+Utilization ratio = 800 / 2,400 = 33%
+ÔåÆ Large redevelopment potential because most of the allowed building volume is unused.
+C. RENOVATION NEGLECT SCORE
+Detect last modernization.
+Score:
+ÔÇó
+no renovation ÔëÑ30 years ÔåÆ +5
+
+--- PAGE 5 ---
+ÔÇó
+no renovation 20ÔÇô30 years ÔåÆ +3
+ÔÇó
+renovation <15-10 years ÔåÆ 0
+D. HEATING DISTRESS SCORE (Main Trigger)
+Score:
+ÔÇó
+oil heating likely / confirmed ÔåÆ +4
+ÔÇó
+old gas heating ÔåÆ +2
+ÔÇó
+modern heating ÔåÆ 0
+Heating modernization risk increases seller motivation.
+E. AGE SWEET SPOT BONUS
+Score:
+ÔÇó
+building age 60ÔÇô70 years ÔåÆ +3
+ÔÇó
+age 50ÔÇô60 ÔåÆ +2
+ÔÇó
+age 40ÔÇô50 ÔåÆ +1
+Too new ÔåÆ 0
+Too old with heavy restrictions ÔåÆ weak.
+F. PARCEL POTENTIAL BONUS
+Score:
+ÔÇó
+parcel ÔëÑ1500 m┬▓ ÔåÆ +3
+ÔÇó
+parcel 1000ÔÇô1500 m┬▓ ÔåÆ +2
+ÔÇó
+parcel 800ÔÇô1000 m┬▓ ÔåÆ +1
+6. FINAL SCORE CALCULATION
+total_score = floor_upside + utilization_gap + 
+renovation_neglect + heating_distress + age_bonus + 
+parcel_bonus
+Then sort:
+
+--- PAGE 6 ---
+ Highest total_score first
+This ranking shows:
+ÔÇó
+strongest legal upside
+ÔÇó
+strongest neglect pattern
+ÔÇó
+strongest acquisition probability
+7. OUTPUT FIELDS
+Developer must export:
+ÔÇó
+address
+ÔÇó
+municipality
+ÔÇó
+parcel size
+ÔÇó
+built floors
+ÔÇó
+allowed floors
+ÔÇó
+built GFA
+ÔÇó
+allowed GFA
+ÔÇó
+% utilization
+ÔÇó
+construction year
+ÔÇó
+renovation status
+ÔÇó
+heating signal
+ÔÇó
+total score
+ÔÇó
+coordinates
+Example reason:
+ÔÇ£Parcel 1,320 m┬▓; built 2 floors but zoning allows 5; only 43% of allowed volume 
+used; no renovation since 1985; likely oil heating.ÔÇØ
+

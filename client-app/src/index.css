@@ -1,0 +1,41 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --color-sidebar: #0a160f;
+  --color-sidebar-hover: #141f18;
+  --color-lime: #b1f200;
+  --color-lime-soft: #d4f799;
+  --color-surface: #f5f5f5;
+  --color-card: #ffffff;
+  --color-tan: #f5f0e6;
+  --color-muted: #6b7280;
+  --color-border: #e5e7eb;
+  --color-ink: #111111;
+  --radius-card: 12px;
+  --radius-pill: 999px;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background: var(--color-surface);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button {
+    font-family: inherit;
+  }
+}

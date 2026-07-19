@@ -1,0 +1,35 @@
+{
+  "name": "antberg-stuttgart-alkis-export",
+  "version": "1.0.0",
+  "description": "Export full Stuttgart ALKIS data from LGL WFS to Excel",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "export:stuttgart": "node --max-old-space-size=4096 src/index.js",
+    "export:stuttgart:smoke": "node src/index.js --layer v_al_flurstueck --max-tiles 1 --out-dir output/smoke-test",
+    "filter:stuttgart": "node --max-old-space-size=4096 src/filter-cli.js",
+    "fetch:external": "node --max-old-space-size=4096 src/fetch-external-cli.js",
+    "import:waermeatlas": "node --max-old-space-size=8192 src/import-waermeatlas-cli.js",
+    "export:catalog": "node src/export-catalog-cli.js",
+    "import:db": "node src/import-db-cli.js",
+    "evaluate:object": "node src/evaluate-cli.js",
+    "client": "node src/client-server.js",
+    "client:dev": "npm run dev --prefix client-app",
+    "client:build": "npm run build --prefix client-app",
+    "client:start": "npm run client:build && npm run client",
+    "build:deploy": "npm install --prefix client-app && npm run client:build",
+    "start": "node src/client-server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@turf/turf": "^7.3.5",
+    "exceljs": "^4.4.0",
+    "fast-xml-parser": "^5.9.3",
+    "mysql2": "^3.23.0",
+    "p-limit": "^7.3.0",
+    "shapefile": "^0.6.6",
+    "sql.js": "^1.14.1"
+  }
+}

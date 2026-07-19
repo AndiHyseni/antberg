@@ -1,0 +1,14 @@
+[
+  {
+    "flurstueckskennzeichen": "08111000000000000000",
+    "allowed_floors": 5,
+    "built_floors": 2,
+    "allowed_gfa": 2400,
+    "built_gfa": 800,
+    "construction_year": 1960,
+    "last_renovation_year": 1985,
+    "heating_signal": "oil",
+    "heritage_protected": false,
+    "allows_densification": true
+  }
+]

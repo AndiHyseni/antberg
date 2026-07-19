@@ -1,0 +1,739 @@
+{
+  "eval_id": "4983b093",
+  "object_id": "STG-TEST28",
+  "mandate_id": "MND-SAMPLE-001",
+  "status": "reported",
+  "confidence_pct": 95,
+  "missing_docs": [],
+  "created_at": "2026-07-08T17:11:22.769Z",
+  "updated_at": "2026-07-08T17:11:22.772Z",
+  "intake": {
+    "object_id": "STG-TEST28",
+    "mandate_id": "MND-SAMPLE-001",
+    "label": "28-unit mixed-use · Stuttgart-West",
+    "address": "Samplestraße 12, 70178 Stuttgart",
+    "municipality": "Stuttgart",
+    "district": "Stuttgart-West",
+    "micro_location": "Near Feuersee · mixed residential / ground-floor retail",
+    "auto_confirm": true,
+    "documents_received": [
+      "grundbuch",
+      "g vz",
+      "plans",
+      "mietvertraege",
+      "energy",
+      "photos",
+      "expose"
+    ],
+    "living_area_m2": 2180,
+    "commercial_area_m2": 320,
+    "unit_count": 28,
+    "annual_net_rent_eur": 286400,
+    "annual_market_rent_eur": 312000,
+    "vacancy_pct": 3.5,
+    "non_recoverables_eur": 18400,
+    "maintenance_eur": 22600,
+    "land_area_m2": 1420,
+    "bodenrichtwert_eur_m2": 890,
+    "construction_year": 1962,
+    "replacement_cost_eur_m2": 2450,
+    "comparable_price_eur": 4200000,
+    "comparable_adjustment_pct": -4,
+    "owner_name": "Sample Eigentümer GmbH",
+    "grundschuld_eur": 980000,
+    "allowed_gfa_m2": 3850,
+    "built_gfa_m2": 2500,
+    "location_score": 78,
+    "transport_note": "U-Bahn Feuersee 6 min walk",
+    "rent_level": "mid-high",
+    "bebauungsplan_note": "WR / mixed use · FNP proxy GFZ from scan",
+    "component_conditions": {
+      "roof": "fair",
+      "facade": "fair",
+      "windows": "fair",
+      "heating": "poor",
+      "electricity": "good",
+      "pipes": "fair",
+      "bathrooms": "fair",
+      "floors": "good",
+      "basement": "good",
+      "moisture": "good",
+      "fire_protection": "good",
+      "energy_upgrade": "fair",
+      "common_areas": "fair"
+    }
+  },
+  "documents": [
+    {
+      "doc_id": "4983b093-doc-1",
+      "type": "grundbuch",
+      "label": "Grundbuchauszug",
+      "filename": "grundbuch.pdf",
+      "uploaded_at": "2026-07-08T17:11:22.769Z",
+      "status": "received"
+    },
+    {
+      "doc_id": "4983b093-doc-2",
+      "type": "g_vz",
+      "label": "GVZ / Teilungserklärung",
+      "filename": "g vz.pdf",
+      "uploaded_at": "2026-07-08T17:11:22.769Z",
+      "status": "received"
+    },
+    {
+      "doc_id": "4983b093-doc-3",
+      "type": "plans",
+      "label": "Grundrisse / Flächenaufstellung",
+      "filename": "plans.pdf",
+      "uploaded_at": "2026-07-08T17:11:22.769Z",
+      "status": "received"
+    },
+    {
+      "doc_id": "4983b093-doc-4",
+      "type": "mietvertraege",
+      "label": "Mietverträge",
+      "filename": "mietvertraege.pdf",
+      "uploaded_at": "2026-07-08T17:11:22.769Z",
+      "status": "received"
+    },
+    {
+      "doc_id": "4983b093-doc-5",
+      "type": "energy",
+      "label": "Energieausweis",
+      "filename": "energy.pdf",
+      "uploaded_at": "2026-07-08T17:11:22.769Z",
+      "status": "received"
+    },
+    {
+      "doc_id": "4983b093-doc-6",
+      "type": "photos",
+      "label": "Objektfotos",
+      "filename": "photos.pdf",
+      "uploaded_at": "2026-07-08T17:11:22.769Z",
+      "status": "received"
+    },
+    {
+      "doc_id": "4983b093-doc-7",
+      "type": "expose",
+      "label": "Exposé / Verkäuferangaben",
+      "filename": "expose.pdf",
+      "uploaded_at": "2026-07-08T17:11:22.769Z",
+      "status": "received"
+    }
+  ],
+  "facts": [
+    {
+      "key": "living_area_m2",
+      "value": 2180,
+      "unit": "m2",
+      "source_doc_id": "4983b093-doc-3",
+      "extracted_by": "system",
+      "confirmed_by": "office",
+      "confirmed_at": "2026-07-08T17:11:22.771Z",
+      "note": "Proposed from intake / plans"
+    },
+    {
+      "key": "commercial_area_m2",
+      "value": 320,
+      "unit": "m2",
+      "source_doc_id": "4983b093-doc-3",
+      "extracted_by": "system",
+      "confirmed_by": "office",
+      "confirmed_at": "2026-07-08T17:11:22.771Z",
+      "note": "Proposed from intake / plans"
+    },
+    {
+      "key": "unit_count",
+      "value": 28,
+      "unit": null,
+      "source_doc_id": "4983b093-doc-3",
+      "extracted_by": "system",
+      "confirmed_by": "office",
+      "confirmed_at": "2026-07-08T17:11:22.771Z",
+      "note": "Proposed from intake / plans"
+    },
+    {
+      "key": "annual_net_rent_eur",
+      "value": 286400,
+      "unit": "eur",
+      "source_doc_id": "4983b093-doc-4",
+      "extracted_by": "system",
+      "confirmed_by": "office",
+      "confirmed_at": "2026-07-08T17:11:22.771Z",
+      "note": "Proposed from intake / mietvertraege"
+    },
+    {
+      "key": "annual_market_rent_eur",
+      "value": 312000,
+      "unit": "eur",
+      "source_doc_id": "4983b093-doc-4",
+      "extracted_by": "system",
+      "confirmed_by": "office",
+      "confirmed_at": "2026-07-08T17:11:22.771Z",
+      "note": "Proposed from intake / mietvertraege"
+    },
+    {
+      "key": "vacancy_pct",
+      "value": 3.5,
+      "unit": "pct",
+      "source_doc_id": "4983b093-doc-4",
+      "extracted_by": "system",
+      "confirmed_by": "office",
+      "confirmed_at": "2026-07-08T17:11:22.771Z",
+      "note": "Proposed from intake / mietvertraege"
+    },
+    {
+      "key": "non_recoverables_eur",
+      "value": 18400,
+      "unit": "eur",
+      "source_doc_id": "4983b093-doc-7",
+      "extracted_by": "system",
+      "confirmed_by": "office",
+      "confirmed_at": "2026-07-08T17:11:22.771Z",
+      "note": "Proposed from intake / expose"
+    },
+    {
+      "key": "maintenance_eur",
+      "value": 22600,
+      "unit": "eur",
+      "source_doc_id": "4983b093-doc-7",
+      "extracted_by": "system",
+      "confirmed_by": "office",
+      "confirmed_at": "2026-07-08T17:11:22.771Z",
+      "note": "Proposed from intake / expose"
+    },
+    {
+      "key": "land_area_m2",
+      "value": 1420,
+      "unit": "m2",
+      "source_doc_id": "4983b093-doc-1",
+      "extracted_by": "system",
+      "confirmed_by": "office",
+      "confirmed_at": "2026-07-08T17:11:22.771Z",
+      "note": "Proposed from intake / grundbuch"
+    },
+    {
+      "key": "bodenrichtwert_eur_m2",
+      "value": 890,
+      "unit": "eur/m2",
+      "source_doc_id": "4983b093-doc-7",
+      "extracted_by": "system",
+      "confirmed_by": "office",
+      "confirmed_at": "2026-07-08T17:11:22.771Z",
+      "note": "Proposed from intake / expose"
+    },
+    {
+      "key": "construction_year",
+      "value": 1962,
+      "unit": "year",
+      "source_doc_id": "4983b093-doc-5",
+      "extracted_by": "system",
+      "confirmed_by": "office",
+      "confirmed_at": "2026-07-08T17:11:22.771Z",
+      "note": "Proposed from intake / energy"
+    },
+    {
+      "key": "replacement_cost_eur_m2",
+      "value": 2450,
+      "unit": "eur/m2",
+      "source_doc_id": "4983b093-doc-3",
+      "extracted_by": "system",
+      "confirmed_by": "office",
+      "confirmed_at": "2026-07-08T17:11:22.771Z",
+      "note": "Proposed from intake / plans"
+    },
+    {
+      "key": "comparable_price_eur",
+      "value": 4200000,
+      "unit": "eur",
+      "source_doc_id": "4983b093-doc-7",
+      "extracted_by": "system",
+      "confirmed_by": "office",
+      "confirmed_at": "2026-07-08T17:11:22.771Z",
+      "note": "Proposed from intake / expose"
+    },
+    {
+      "key": "comparable_adjustment_pct",
+      "value": -4,
+      "unit": "pct",
+      "source_doc_id": "4983b093-doc-7",
+      "extracted_by": "system",
+      "confirmed_by": "office",
+      "confirmed_at": "2026-07-08T17:11:22.771Z",
+      "note": "Proposed from intake / expose"
+    },
+    {
+      "key": "owner_name",
+      "value": "Sample Eigentümer GmbH",
+      "unit": null,
+      "source_doc_id": "4983b093-doc-1",
+      "extracted_by": "system",
+      "confirmed_by": "office",
+      "confirmed_at": "2026-07-08T17:11:22.771Z",
+      "note": "Proposed from intake / grundbuch"
+    },
+    {
+      "key": "grundschuld_eur",
+      "value": 980000,
+      "unit": "eur",
+      "source_doc_id": "4983b093-doc-1",
+      "extracted_by": "system",
+      "confirmed_by": "office",
+      "confirmed_at": "2026-07-08T17:11:22.771Z",
+      "note": "Proposed from intake / grundbuch"
+    },
+    {
+      "key": "allowed_gfa_m2",
+      "value": 3850,
+      "unit": "m2",
+      "source_doc_id": "4983b093-doc-3",
+      "extracted_by": "system",
+      "confirmed_by": "office",
+      "confirmed_at": "2026-07-08T17:11:22.771Z",
+      "note": "Proposed from intake / plans"
+    },
+    {
+      "key": "built_gfa_m2",
+      "value": 2500,
+      "unit": "m2",
+      "source_doc_id": "4983b093-doc-3",
+      "extracted_by": "system",
+      "confirmed_by": "office",
+      "confirmed_at": "2026-07-08T17:11:22.771Z",
+      "note": "Proposed from intake / plans"
+    }
+  ],
+  "capex_items": [
+    {
+      "component": "roof",
+      "condition": "fair",
+      "urgency": "medium",
+      "cost_low": 81532,
+      "cost_high": 134288,
+      "note": "Roof · fair · qty 2180 m2"
+    },
+    {
+      "component": "facade",
+      "condition": "fair",
+      "urgency": "medium",
+      "cost_low": 129492,
+      "cost_high": 237402,
+      "note": "Facade · fair · qty 2180 m2"
+    },
+    {
+      "component": "windows",
+      "condition": "fair",
+      "urgency": "medium",
+      "cost_low": 539550,
+      "cost_high": 899250,
+      "note": "Windows · fair · qty 2180 m2"
+    },
+    {
+      "component": "heating",
+      "condition": "poor",
+      "urgency": "medium",
+      "cost_low": 332640,
+      "cost_high": 609840,
+      "note": "Heating system · poor · qty 28 unit"
+    },
+    {
+      "component": "electricity",
+      "condition": "good",
+      "urgency": "medium",
+      "cost_low": 10780,
+      "cost_high": 24640,
+      "note": "Electrical installation · good · qty 28 unit"
+    },
+    {
+      "component": "pipes",
+      "condition": "fair",
+      "urgency": "medium",
+      "cost_low": 62370,
+      "cost_high": 124740,
+      "note": "Pipes / sanitation · fair · qty 28 unit"
+    },
+    {
+      "component": "bathrooms",
+      "condition": "fair",
+      "urgency": "medium",
+      "cost_low": 123200,
+      "cost_high": 231000,
+      "note": "Bathrooms · fair · qty 28 unit"
+    },
+    {
+      "component": "floors",
+      "condition": "good",
+      "urgency": "medium",
+      "cost_low": 10791,
+      "cost_high": 22781,
+      "note": "Floors / interior finishes · good · qty 2180 m2"
+    },
+    {
+      "component": "basement",
+      "condition": "good",
+      "urgency": "medium",
+      "cost_low": 4197,
+      "cost_high": 8993,
+      "note": "Basement / cellar · good · qty 2180 m2"
+    },
+    {
+      "component": "moisture",
+      "condition": "good",
+      "urgency": "medium",
+      "cost_low": 0,
+      "cost_high": 0,
+      "note": "Moisture remediation · good · qty 1 flat"
+    },
+    {
+      "component": "fire_protection",
+      "condition": "good",
+      "urgency": "medium",
+      "cost_low": 275,
+      "cost_high": 990,
+      "note": "Fire protection · good · qty 1 flat"
+    },
+    {
+      "component": "energy_upgrade",
+      "condition": "fair",
+      "urgency": "medium",
+      "cost_low": 237402,
+      "cost_high": 422048,
+      "note": "Energy upgrade package · fair · qty 2180 m2"
+    },
+    {
+      "component": "common_areas",
+      "condition": "fair",
+      "urgency": "medium",
+      "cost_low": 239800,
+      "cost_high": 431640,
+      "note": "Common areas / stairwells · fair · qty 2180 m2"
+    }
+  ],
+  "valuations": [
+    {
+      "method": "ertragswert",
+      "value_low": 3621169,
+      "value_high": 5230578,
+      "inputs_json": {
+        "noi_eur": 235376,
+        "cap_rate_low": 0.045,
+        "cap_rate_high": 0.065,
+        "formula": "NOI / cap_rate"
+      },
+      "explanation": "Income capitalization on current NOI €235.376"
+    },
+    {
+      "method": "ertragswert",
+      "value_low": 4149385,
+      "value_high": 5993556,
+      "inputs_json": {
+        "noi_eur": 269710,
+        "variant": "potential",
+        "cap_rate_mid": 0.055
+      },
+      "explanation": "Stabilized Ertragswert on potential NOI €269.710"
+    },
+    {
+      "method": "sachwert",
+      "value_low": 2802910,
+      "value_high": 3463390,
+      "inputs_json": {
+        "land_value_low": 1200610,
+        "land_value_high": 1326990,
+        "replacement_cost_eur_m2": 2450,
+        "living_area_m2": 2180,
+        "depreciation_pct": 65,
+        "formula": "Bodenwert + (Herstellungskosten − Alterswertminderung)"
+      },
+      "explanation": "Sachwert: land €1.200.610–1.326.990 + building net"
+    },
+    {
+      "method": "vergleichswert",
+      "value_low": 3830400,
+      "value_high": 4233600,
+      "inputs_json": {
+        "comparable_price_eur": 4200000,
+        "adjustment_pct": -4,
+        "formula": "Comparable × (1 + adjustment)"
+      },
+      "explanation": "Vergleichswert from office comparable €4.200.000"
+    },
+    {
+      "method": "bank",
+      "value_low": 2466561,
+      "value_high": 3047783,
+      "inputs_json": {
+        "base_method": "min(ertragswert, sachwert)",
+        "haircut_pct": 12,
+        "ltv_assumption": 0.65,
+        "loan_basis_low": 1603265,
+        "loan_basis_high": 1981059,
+        "disclaimer": "Not an official bank valuation — conservative ruleset for offer prep"
+      },
+      "explanation": "Bank-style conservative value (haircut on lower of income + cost approaches)"
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario": "as_is",
+      "label": "Buy as-is",
+      "total_cost_low": 0,
+      "total_cost_high": 265804,
+      "exit_value_low": 3418160,
+      "exit_value_high": 4309189,
+      "profit_low": 3202700.55,
+      "profit_high": 4138281,
+      "max_offer_low": 3144707,
+      "max_offer_high": 3144707
+    },
+    {
+      "scenario": "renovate_hold",
+      "label": "Renovate & hold",
+      "total_cost_low": 1772029,
+      "total_cost_high": 3147612,
+      "exit_value_low": 4658627,
+      "exit_value_high": 5149009,
+      "profit_low": -1736237,
+      "profit_high": -501290,
+      "max_offer_low": 2461075,
+      "max_offer_high": 2971742
+    },
+    {
+      "scenario": "renovate_sell",
+      "label": "Renovate & sell",
+      "total_cost_low": 1772029,
+      "total_cost_high": 3147612,
+      "exit_value_low": 4805742,
+      "exit_value_high": 5296123,
+      "profit_low": -1760030,
+      "profit_high": -440359,
+      "max_offer_low": 2461075,
+      "max_offer_high": 3047783
+    }
+  ],
+  "income": {
+    "annual_net_rent_eur": 286400,
+    "annual_market_rent_eur": 312000,
+    "vacancy_pct": 3.5,
+    "non_recoverables_eur": 18400,
+    "maintenance_eur": 22600,
+    "current_noi": 235376,
+    "potential_noi": 269710,
+    "rent_upside_eur": 34334,
+    "computed_at": "2026-07-08T17:11:22.772Z"
+  },
+  "location": {
+    "municipality": "Stuttgart",
+    "micro_location": "Near Feuersee · mixed residential / ground-floor retail",
+    "bodenrichtwert_eur_m2": 890,
+    "land_area_m2": 1420,
+    "land_value_low": 1200610,
+    "land_value_high": 1326990,
+    "location_score": 78,
+    "transport_note": "U-Bahn Feuersee 6 min walk",
+    "rent_level": "mid-high",
+    "bebauungsplan_note": "WR / mixed use · FNP proxy GFZ from scan"
+  },
+  "verification": {
+    "checks": [
+      {
+        "check": "Plan area vs built GFA",
+        "status": "warn",
+        "detail": "Living 2180 m² vs built GFA 2500 m² (13% delta)"
+      },
+      {
+        "check": "Contract rent vs market rent",
+        "status": "pass",
+        "detail": "Net rent €286400 vs market €312000"
+      },
+      {
+        "check": "Bodenrichtwert plausibility",
+        "status": "pass",
+        "detail": "BRW €890/m² on 1420 m² land"
+      },
+      {
+        "check": "Photo coverage",
+        "status": "pass",
+        "detail": "Photos received"
+      }
+    ],
+    "pass_count": 3,
+    "warn_count": 1,
+    "fail_count": 0,
+    "verified_at": "2026-07-08T17:11:22.771Z"
+  },
+  "report": {
+    "generated_at": "2026-07-08T17:11:22.772Z",
+    "object_id": "STG-TEST28",
+    "eval_id": "4983b093",
+    "confidence_pct": 95,
+    "missing_docs": [],
+    "recommendation": "reject",
+    "recommendation_labels": {
+      "buy": "Buy",
+      "negotiate": "Negotiate",
+      "reject": "Reject",
+      "need_documents": "Need documents",
+      "need_inspection": "Need inspection"
+    },
+    "value_range": {
+      "low": 3418160,
+      "high": 4309189
+    },
+    "bank_value": {
+      "low": 2466561,
+      "high": 3047783
+    },
+    "capex_range": {
+      "cost_low": 1772029,
+      "cost_high": 3147612
+    },
+    "income": {
+      "annual_net_rent_eur": 286400,
+      "annual_market_rent_eur": 312000,
+      "vacancy_pct": 3.5,
+      "non_recoverables_eur": 18400,
+      "maintenance_eur": 22600,
+      "current_noi": 235376,
+      "potential_noi": 269710,
+      "rent_upside_eur": 34334,
+      "computed_at": "2026-07-08T17:11:22.772Z"
+    },
+    "safe_offer_range": {
+      "low": 2461075,
+      "high": 2971742
+    },
+    "do_not_exceed": 2971742,
+    "valuations": [
+      {
+        "method": "ertragswert",
+        "value_low": 3621169,
+        "value_high": 5230578,
+        "inputs_json": {
+          "noi_eur": 235376,
+          "cap_rate_low": 0.045,
+          "cap_rate_high": 0.065,
+          "formula": "NOI / cap_rate"
+        },
+        "explanation": "Income capitalization on current NOI €235.376"
+      },
+      {
+        "method": "ertragswert",
+        "value_low": 4149385,
+        "value_high": 5993556,
+        "inputs_json": {
+          "noi_eur": 269710,
+          "variant": "potential",
+          "cap_rate_mid": 0.055
+        },
+        "explanation": "Stabilized Ertragswert on potential NOI €269.710"
+      },
+      {
+        "method": "sachwert",
+        "value_low": 2802910,
+        "value_high": 3463390,
+        "inputs_json": {
+          "land_value_low": 1200610,
+          "land_value_high": 1326990,
+          "replacement_cost_eur_m2": 2450,
+          "living_area_m2": 2180,
+          "depreciation_pct": 65,
+          "formula": "Bodenwert + (Herstellungskosten − Alterswertminderung)"
+        },
+        "explanation": "Sachwert: land €1.200.610–1.326.990 + building net"
+      },
+      {
+        "method": "vergleichswert",
+        "value_low": 3830400,
+        "value_high": 4233600,
+        "inputs_json": {
+          "comparable_price_eur": 4200000,
+          "adjustment_pct": -4,
+          "formula": "Comparable × (1 + adjustment)"
+        },
+        "explanation": "Vergleichswert from office comparable €4.200.000"
+      },
+      {
+        "method": "bank",
+        "value_low": 2466561,
+        "value_high": 3047783,
+        "inputs_json": {
+          "base_method": "min(ertragswert, sachwert)",
+          "haircut_pct": 12,
+          "ltv_assumption": 0.65,
+          "loan_basis_low": 1603265,
+          "loan_basis_high": 1981059,
+          "disclaimer": "Not an official bank valuation — conservative ruleset for offer prep"
+        },
+        "explanation": "Bank-style conservative value (haircut on lower of income + cost approaches)"
+      }
+    ],
+    "scenarios": [
+      {
+        "scenario": "as_is",
+        "label": "Buy as-is",
+        "total_cost_low": 0,
+        "total_cost_high": 265804,
+        "exit_value_low": 3418160,
+        "exit_value_high": 4309189,
+        "profit_low": 3202700.55,
+        "profit_high": 4138281,
+        "max_offer_low": 3144707,
+        "max_offer_high": 3144707
+      },
+      {
+        "scenario": "renovate_hold",
+        "label": "Renovate & hold",
+        "total_cost_low": 1772029,
+        "total_cost_high": 3147612,
+        "exit_value_low": 4658627,
+        "exit_value_high": 5149009,
+        "profit_low": -1736237,
+        "profit_high": -501290,
+        "max_offer_low": 2461075,
+        "max_offer_high": 2971742
+      },
+      {
+        "scenario": "renovate_sell",
+        "label": "Renovate & sell",
+        "total_cost_low": 1772029,
+        "total_cost_high": 3147612,
+        "exit_value_low": 4805742,
+        "exit_value_high": 5296123,
+        "profit_low": -1760030,
+        "profit_high": -440359,
+        "max_offer_low": 2461075,
+        "max_offer_high": 3047783
+      }
+    ],
+    "verification": {
+      "checks": [
+        {
+          "check": "Plan area vs built GFA",
+          "status": "warn",
+          "detail": "Living 2180 m² vs built GFA 2500 m² (13% delta)"
+        },
+        {
+          "check": "Contract rent vs market rent",
+          "status": "pass",
+          "detail": "Net rent €286400 vs market €312000"
+        },
+        {
+          "check": "Bodenrichtwert plausibility",
+          "status": "pass",
+          "detail": "BRW €890/m² on 1420 m² land"
+        },
+        {
+          "check": "Photo coverage",
+          "status": "pass",
+          "detail": "Photos received"
+        }
+      ],
+      "pass_count": 3,
+      "warn_count": 1,
+      "fail_count": 0,
+      "verified_at": "2026-07-08T17:11:22.771Z"
+    },
+    "confirmed_facts_count": 18
+  }
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Evaluation Report · STG-TEST28</title>
+  <style>
+    body { font-family: Georgia, serif; max-width: 800px; margin: 2rem auto; padding: 0 1.5rem; color: #1a1814; line-height: 1.5; }
+    h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
+    .meta { color: #6b6560; font-size: 0.95rem; margin-bottom: 2rem; }
+    .hero { background: #e8f0ec; padding: 1.5rem; border-radius: 4px; margin: 1.5rem 0; text-align: center; }
+    .hero .num { font-size: 2rem; font-weight: 600; display: block; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0 2rem; font-size: 0.9rem; }
+    th, td { border-bottom: 1px solid #e8e2d8; padding: 0.5rem; text-align: left; }
+    th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #6b6560; }
+    .rec { font-size: 1.25rem; font-weight: 600; color: #2c4a3e; }
+    .pass { color: #2c4a3e; } .warn { color: #9a6b3c; } .fail { color: #8b3030; }
+    @media print { body { margin: 0; } }
+  </style>
+</head>
+<body>
+  <h1>Object Evaluation Report</h1>
+  <p class="meta">STG-TEST28 · eval 504398fd · confidence 95% · 7.7.2026, 14:35:14</p>
+
+  <div class="hero">
+    <span class="num">2.466.561 € – 3.047.783 €</span>
+    Bank-style conservative value (indicative)
+  </div>
+
+  <p class="rec">Recommendation: Reject</p>
+  <p>Safe offer range: <strong>2.461.075 € – 2.971.742 €</strong><br />
+  Do not exceed: <strong>2.971.742 €</strong></p>
+
+  
+
+  <h2>Valuations (three methods + bank)</h2>
+  <table><thead><tr><th>Method</th><th>Range</th><th>Notes</th></tr></thead><tbody><tr><td>ertragswert</td><td>3.621.169 € – 5.230.578 €</td><td>Income capitalization on current NOI €235.376</td></tr><tr><td>ertragswert</td><td>4.149.385 € – 5.993.556 €</td><td>Stabilized Ertragswert on potential NOI €269.710</td></tr><tr><td>sachwert</td><td>2.802.910 € – 3.463.390 €</td><td>Sachwert: land €1.200.610–1.326.990 + building net</td></tr><tr><td>vergleichswert</td><td>3.830.400 € – 4.233.600 €</td><td>Vergleichswert from office comparable €4.200.000</td></tr><tr><td>bank</td><td>2.466.561 € – 3.047.783 €</td><td>Bank-style conservative value (haircut on lower of income + cost approaches)</td></tr></tbody></table>
+
+  <h2>Capex range</h2>
+  <p><strong>1.772.029 € – 3.147.612 €</strong></p>
+  <table><thead><tr><th>Component</th><th>Condition</th><th>Urgency</th><th>Cost</th></tr></thead><tbody><tr><td>roof</td><td>fair</td><td>medium</td><td>81.532 € – 134.288 €</td></tr><tr><td>facade</td><td>fair</td><td>medium</td><td>129.492 € – 237.402 €</td></tr><tr><td>windows</td><td>fair</td><td>medium</td><td>539.550 € – 899.250 €</td></tr><tr><td>heating</td><td>poor</td><td>medium</td><td>332.640 € – 609.840 €</td></tr><tr><td>electricity</td><td>good</td><td>medium</td><td>10.780 € – 24.640 €</td></tr><tr><td>pipes</td><td>fair</td><td>medium</td><td>62.370 € – 124.740 €</td></tr><tr><td>bathrooms</td><td>fair</td><td>medium</td><td>123.200 € – 231.000 €</td></tr><tr><td>floors</td><td>good</td><td>medium</td><td>10.791 € – 22.781 €</td></tr><tr><td>basement</td><td>good</td><td>medium</td><td>4.197 € – 8.993 €</td></tr><tr><td>moisture</td><td>good</td><td>medium</td><td>0 € – 0 €</td></tr><tr><td>fire_protection</td><td>good</td><td>medium</td><td>275 € – 990 €</td></tr><tr><td>energy_upgrade</td><td>fair</td><td>medium</td><td>237.402 € – 422.048 €</td></tr><tr><td>common_areas</td><td>fair</td><td>medium</td><td>239.800 € – 431.640 €</td></tr></tbody></table>
+
+  <h2>Income</h2>
+  <p>Current NOI: 235.376 € · Potential NOI: 269.710 € · Rent upside: 34.334 €</p>
+
+  <h2>Investor scenarios</h2>
+  <table><thead><tr><th>Scenario</th><th>Total cost</th><th>Exit value</th><th>Max offer</th></tr></thead><tbody><tr><td>Buy as-is</td><td>0 € – 265.804 €</td><td>3.418.160 € – 4.309.189 €</td><td>3.144.707 € – 3.144.707 €</td></tr><tr><td>Renovate & hold</td><td>1.772.029 € – 3.147.612 €</td><td>4.658.627 € – 5.149.009 €</td><td>2.461.075 € – 2.971.742 €</td></tr><tr><td>Renovate & sell</td><td>1.772.029 € – 3.147.612 €</td><td>4.805.742 € – 5.296.123 €</td><td>2.461.075 € – 3.047.783 €</td></tr></tbody></table>
+
+  <h2>Data verification</h2>
+  <table><thead><tr><th>Check</th><th>Status</th><th>Detail</th></tr></thead><tbody><tr><td>Plan area vs built GFA</td><td class="warn">warn</td><td>Living 2180 m² vs built GFA 2500 m² (13% delta)</td></tr><tr><td>Contract rent vs market rent</td><td class="pass">pass</td><td>Net rent €286400 vs market €312000</td></tr><tr><td>Bodenrichtwert plausibility</td><td class="pass">pass</td><td>BRW €890/m² on 1420 m² land</td></tr><tr><td>Photo coverage</td><td class="pass">pass</td><td>Photos received</td></tr></tbody></table>
+
+  <h2>Confirmed facts</h2>
+  <table><thead><tr><th>Key</th><th>Value</th><th>Source</th><th>Confirmed by</th></tr></thead><tbody><tr><td>living_area_m2</td><td>2180 m2</td><td>504398fd-doc-3</td><td>office</td></tr><tr><td>commercial_area_m2</td><td>320 m2</td><td>504398fd-doc-3</td><td>office</td></tr><tr><td>unit_count</td><td>28</td><td>504398fd-doc-3</td><td>office</td></tr><tr><td>annual_net_rent_eur</td><td>286400 eur</td><td>504398fd-doc-4</td><td>office</td></tr><tr><td>annual_market_rent_eur</td><td>312000 eur</td><td>504398fd-doc-4</td><td>office</td></tr><tr><td>vacancy_pct</td><td>3.5 pct</td><td>504398fd-doc-4</td><td>office</td></tr><tr><td>non_recoverables_eur</td><td>18400 eur</td><td>504398fd-doc-7</td><td>office</td></tr><tr><td>maintenance_eur</td><td>22600 eur</td><td>504398fd-doc-7</td><td>office</td></tr><tr><td>land_area_m2</td><td>1420 m2</td><td>504398fd-doc-1</td><td>office</td></tr><tr><td>bodenrichtwert_eur_m2</td><td>890 eur/m2</td><td>504398fd-doc-7</td><td>office</td></tr><tr><td>construction_year</td><td>1962 year</td><td>504398fd-doc-5</td><td>office</td></tr><tr><td>replacement_cost_eur_m2</td><td>2450 eur/m2</td><td>504398fd-doc-3</td><td>office</td></tr><tr><td>comparable_price_eur</td><td>4200000 eur</td><td>504398fd-doc-7</td><td>office</td></tr><tr><td>comparable_adjustment_pct</td><td>-4 pct</td><td>504398fd-doc-7</td><td>office</td></tr><tr><td>owner_name</td><td>Sample Eigentümer GmbH</td><td>504398fd-doc-1</td><td>office</td></tr><tr><td>grundschuld_eur</td><td>980000 eur</td><td>504398fd-doc-1</td><td>office</td></tr><tr><td>allowed_gfa_m2</td><td>3850 m2</td><td>504398fd-doc-3</td><td>office</td></tr><tr><td>built_gfa_m2</td><td>2500 m2</td><td>504398fd-doc-3</td><td>office</td></tr></tbody></table>
+
+  <p style="margin-top:3rem;font-size:0.85rem;color:#6b6560">Not an official bank or court valuation. All figures are ranges based on human-confirmed facts. inputs_json stored per valuation for audit.</p>
+</body>
+</html>

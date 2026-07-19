@@ -1,0 +1,82 @@
+{
+  "eval_id": "97a30b3c",
+  "object_id": "STG-000601",
+  "mandate_id": null,
+  "status": "draft",
+  "confidence_pct": 0,
+  "missing_docs": [
+    "Grundbuchauszug",
+    "GVZ / Teilungserklärung",
+    "Grundrisse / Flächenaufstellung",
+    "Mietverträge",
+    "Energieausweis",
+    "Objektfotos",
+    "Exposé / Verkäuferangaben"
+  ],
+  "created_at": "2026-07-08T20:27:39.324Z",
+  "updated_at": "2026-07-08T20:27:39.329Z",
+  "intake": {
+    "auto_confirm": false,
+    "object_id": "STG-000601",
+    "documents_received": []
+  },
+  "documents": [
+    {
+      "doc_id": "97a30b3c-doc-1",
+      "type": "grundbuch",
+      "label": "Grundbuchauszug",
+      "uploaded_at": "2026-07-08T20:27:39.324Z",
+      "status": "pending"
+    },
+    {
+      "doc_id": "97a30b3c-doc-2",
+      "type": "g_vz",
+      "label": "GVZ / Teilungserklärung",
+      "uploaded_at": "2026-07-08T20:27:39.324Z",
+      "status": "pending"
+    },
+    {
+      "doc_id": "97a30b3c-doc-3",
+      "type": "plans",
+      "label": "Grundrisse / Flächenaufstellung",
+      "uploaded_at": "2026-07-08T20:27:39.324Z",
+      "status": "pending"
+    },
+    {
+      "doc_id": "97a30b3c-doc-4",
+      "type": "mietvertraege",
+      "label": "Mietverträge",
+      "uploaded_at": "2026-07-08T20:27:39.324Z",
+      "status": "pending"
+    },
+    {
+      "doc_id": "97a30b3c-doc-5",
+      "type": "energy",
+      "label": "Energieausweis",
+      "uploaded_at": "2026-07-08T20:27:39.324Z",
+      "status": "pending"
+    },
+    {
+      "doc_id": "97a30b3c-doc-6",
+      "type": "photos",
+      "label": "Objektfotos",
+      "uploaded_at": "2026-07-08T20:27:39.324Z",
+      "status": "pending"
+    },
+    {
+      "doc_id": "97a30b3c-doc-7",
+      "type": "expose",
+      "label": "Exposé / Verkäuferangaben",
+      "uploaded_at": "2026-07-08T20:27:39.324Z",
+      "status": "pending"
+    }
+  ],
+  "facts": [],
+  "capex_items": [],
+  "valuations": [],
+  "scenarios": [],
+  "income": null,
+  "location": null,
+  "verification": null,
+  "report": null
+}

@@ -1,0 +1,11 @@
+node_modules/
+client-app/node_modules/
+client-app/dist/
+cache/
+output/
+database/.env
+.env
+data/waermeatlas/
+pdf/wfs_*.xml
+pdf/*_test.gml
+pdf/filterscore_extracted.txt
