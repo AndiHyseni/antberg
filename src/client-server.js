@@ -282,7 +282,9 @@ async function main() {
         return;
       }
 
-      let filePath = path.join(CLIENT, url.pathname === '/' ? 'index.html' : url.pathname);
+      const relativePath =
+        url.pathname === '/' ? 'index.html' : url.pathname.replace(/^\/+/, '');
+      const filePath = path.normalize(path.join(CLIENT, relativePath));
       if (!filePath.startsWith(CLIENT)) {
         res.writeHead(403);
         res.end('Forbidden');
