@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Plus } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Card, OutlineButton, SectionLabel } from '../components/ui/primitives';
+import { Card, OutlineButton, PageHeader, SectionLabel } from '../components/ui/primitives';
 import { displayCode, fetchCatalog, parseTicketMid } from '../api/client';
 import { useApp } from '../context/AppContext';
 
@@ -27,23 +27,23 @@ export function OverviewPage() {
       .catch(() => {});
   }, [setCatalogCount]);
 
+  const selectedCount = selection.length || 4;
+
   return (
     <div className="px-8 py-8">
-      <div className="mb-8 flex items-start justify-between">
-        <div>
-          <h1 className="text-[32px] font-semibold tracking-tight text-ink">Hey, Alex</h1>
-          <p className="mt-1 text-[15px] text-muted">
-            Here&apos;s what needs your attention across your acquisition program.
-          </p>
-        </div>
-        <Link
-          to="/scouting-orders"
-          className="inline-flex items-center gap-2 rounded-md bg-ink px-4 py-2.5 text-[12px] font-semibold text-white hover:bg-black"
-        >
-          <Plus size={16} />
-          CREATE SCOUTING ORDER
-        </Link>
-      </div>
+      <PageHeader
+        title="Hey, Alex"
+        subtitle="Here's what needs your attention across your acquisition program."
+        action={
+          <Link
+            to="/scouting-orders"
+            className="inline-flex items-center gap-2 rounded-md bg-ink px-4 py-2.5 text-[12px] font-semibold text-white hover:bg-black"
+          >
+            <Plus size={16} />
+            CREATE SCOUTING ORDER
+          </Link>
+        }
+      />
 
       <div className="mb-8 grid grid-cols-4 gap-4">
         {[
@@ -70,8 +70,8 @@ export function OverviewPage() {
             btn: 'REVIEW OFFERS',
           },
           {
-            title: 'SELECTED & MANDATE',
-            desc: `${selection.length || 4} opportunities selected — ready to generate mandate`,
+            title: 'SELECTED',
+            desc: `${selectedCount} opportunities selected — ready to generate mandate`,
             to: '/mandate',
             btn: 'PREPARE MANDATE',
           },
@@ -118,8 +118,8 @@ export function OverviewPage() {
       <Card className="mb-8 divide-y divide-border">
         {[
           { id: 'A-041', place: 'Stuttgart-Süd', status: 'Owner Response', pct: 55 },
-          { id: 'B-017', place: 'Zuffenhausen', status: 'Evaluation', pct: 72 },
-          { id: 'A-058', place: 'Bad Cannstatt', status: 'Docs', pct: 28 },
+          { id: 'B-017', place: 'Karlsruhe', status: 'Evaluation', pct: 45 },
+          { id: 'A-058', place: 'Stuttgart-Ost', status: 'Offer Prepared', pct: 70 },
         ].map((p) => (
           <div key={p.id} className="px-6 py-4">
             <div className="mb-2 flex items-center justify-between text-[13px]">

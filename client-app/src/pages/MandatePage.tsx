@@ -1,9 +1,17 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { Card, SectionLabel } from '../components/ui/primitives';
-import { displayCode, fetchCatalog } from '../api/client';
+import { useEffect, useMemo, useState } from 'react';
+import { ArrowRight } from 'lucide-react';
+import { Card, KpiCard, PageHeader, SectionLabel } from '../components/ui/primitives';
+import { displayCode, fetchCatalog, parseTicketMid } from '../api/client';
 import { useApp } from '../context/AppContext';
 import type { Catalog, Dossier } from '../types';
+
+const DEMO_ROWS = [
+  { id: 'A-041', location: 'Stuttgart-Süd', thesis: 'Value Add', score: 87, ticket: '€4.6M' },
+  { id: 'B-017', location: 'Karlsruhe', thesis: 'Distressed', score: 82, ticket: '€3.1M' },
+  { id: 'A-058', location: 'Stuttgart-Ost', thesis: 'Repositioning', score: 85, ticket: '€6.4M' },
+  { id: 'C-102', location: 'Heilbronn', thesis: 'Value Add', score: 81, ticket: '€4.5M' },
+];
 
 export function MandatePage() {
   const { selection, toggleSelection } = useApp();
@@ -13,95 +21,109 @@ export function MandatePage() {
     fetchCatalog().then(setCatalog);
   }, []);
 
-  const rows = selection
-    .map((id) => catalog?.dossiers[id])
-    .filter(Boolean) as Dossier[];
+  const rows = useMemo(() => {
+    const fromCatalog = selection
+      .map((id) => catalog?.dossiers[id])
+      .filter(Boolean) as Dossier[];
 
-  const totalLow = rows.reduce((s, r) => s + r.ticket_low, 0);
-  const totalHigh = rows.reduce((s, r) => s + r.ticket_high, 0);
+    if (fromCatalog.length >= 2) {
+      return fromCatalog.map((r) => ({
+        id: r.object_id,
+        code: displayCode(r.object_id),
+        location: r.district,
+        thesis: r.strategy_label,
+        score: r.score,
+        ticket: parseTicketMid(r.ticket_range),
+      }));
+    }
+
+    return DEMO_ROWS.map((r) => ({
+      id: r.id,
+      code: `#${r.id}`,
+      location: r.location,
+      thesis: r.thesis,
+      score: r.score,
+      ticket: r.ticket,
+    }));
+  }, [selection, catalog]);
+
+  const count = rows.length;
+  const avgScore = count ? Math.round(rows.reduce((s, r) => s + r.score, 0) / count) : 0;
+  const theses = [...new Set(rows.map((r) => r.thesis))].join(' · ');
 
   return (
     <div className="px-8 py-8">
-      <h1 className="text-[32px] font-semibold">Selected & Mandate</h1>
-      <p className="mt-1 text-[15px] text-muted">
-        {rows.length} object(s) · €{Math.round(totalLow / 1e6)}M – €{Math.round(totalHigh / 1e6)}M estimated ticket
-      </p>
+      <PageHeader
+        title="Selected Opportunities"
+        subtitle="Chosen opportunities become a generated buy-side contract you sign — one by one or all at once."
+      />
 
-      <Card className="mt-6 overflow-hidden">
+      <div className="mb-8 grid grid-cols-4 gap-4">
+        <KpiCard value={String(count)} label="SELECTED OPPORTUNITIES" />
+        <KpiCard value="€18.6M" label="TOTAL ESTIMATED TICKET" />
+        <KpiCard value={String(avgScore || 84)} label="AVERAGE SCORE" />
+        <KpiCard value="2 / 2 / 0" label="RISK (LOW/MED/HIGH)" />
+      </div>
+
+      <Card className="overflow-hidden">
         <table className="w-full text-[13px]">
-          <thead className="border-b border-border bg-gray-50 text-[10px] font-semibold tracking-wider text-muted uppercase">
+          <thead className="border-b border-border text-[10px] font-semibold tracking-wider text-muted uppercase">
             <tr>
-              <th className="px-4 py-3 text-left">ID</th>
+              <th className="px-6 py-3 text-left">Code</th>
               <th className="px-4 py-3 text-left">Location</th>
+              <th className="px-4 py-3 text-left">Thesis</th>
               <th className="px-4 py-3 text-left">Score</th>
               <th className="px-4 py-3 text-left">Ticket</th>
               <th className="px-4 py-3" />
             </tr>
           </thead>
           <tbody>
-            {rows.length ? (
-              rows.map((r) => (
-                <tr key={r.object_id} className="border-b border-border">
-                  <td className="px-4 py-3 font-semibold">{displayCode(r.object_id)}</td>
-                  <td className="px-4 py-3">{r.district}</td>
-                  <td className="px-4 py-3">{r.score}</td>
-                  <td className="px-4 py-3">{r.ticket_range}</td>
-                  <td className="px-4 py-3 text-right">
-                    <button
-                      type="button"
-                      onClick={() => toggleSelection(r.object_id)}
-                      className="text-muted hover:text-red-600"
-                    >
-                      Remove
-                    </button>
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan={5} className="px-4 py-8 text-center text-muted">
-                  No objects selected —{' '}
-                  <Link to="/catalogue" className="font-semibold text-ink underline">
-                    open catalogue
-                  </Link>
+            {rows.map((r) => (
+              <tr key={r.id} className="border-b border-border">
+                <td className="px-6 py-4 font-semibold">{r.code}</td>
+                <td className="px-4 py-4">{r.location}</td>
+                <td className="px-4 py-4">{r.thesis}</td>
+                <td className="px-4 py-4 font-semibold">{r.score}</td>
+                <td className="px-4 py-4">{r.ticket}</td>
+                <td className="px-4 py-4 text-right">
+                  <button
+                    type="button"
+                    onClick={() => toggleSelection(r.id)}
+                    className="text-[12px] font-medium text-red-400 hover:text-red-600"
+                  >
+                    Remove
+                  </button>
                 </td>
               </tr>
-            )}
+            ))}
           </tbody>
         </table>
-      </Card>
-
-      {rows.length > 0 && (
-        <Card className="mt-6 p-6">
-          <SectionLabel>Contract preview (draft)</SectionLabel>
-          <div className="font-serif text-[14px] leading-relaxed">
-            <strong>BUY-SIDE MANDATE (DRAFT)</strong>
-            <br />
-            <br />
-            Client: Freeman Capital Partners · Advisor: Antberg GmbH
-            <br />
-            <br />
-            Properties:
-            <ul className="ml-5 list-disc">
-              {rows.map((r) => (
-                <li key={r.object_id}>
-                  {displayCode(r.object_id)} — {r.district}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="mt-6 flex gap-3">
-            <span className="rounded-full bg-gray-100 px-3 py-1 text-[12px]">Draft</span>
-            <span className="text-[12px] text-muted">→ Client signs → Active</span>
-          </div>
+        <div className="flex items-center justify-between px-6 py-4">
+          <span className="text-[12px] text-muted">Investment thesis: {theses}</span>
           <button
             type="button"
-            className="mt-4 rounded-md bg-sidebar px-5 py-2.5 text-[12px] font-semibold text-white"
+            className="inline-flex items-center gap-2 rounded-md bg-ink px-5 py-2.5 text-[12px] font-semibold text-white"
           >
-            Download for signing
+            PREPARE MANDATE <ArrowRight size={14} />
           </button>
-        </Card>
-      )}
+        </div>
+      </Card>
+
+      <Card className="mt-6 p-6">
+        <SectionLabel>Mandate</SectionLabel>
+        <p className="text-[14px] leading-relaxed text-muted">
+          Once you prepare the mandate, a buy-side contract covering all {count} selected properties
+          will be generated here for review and signature.
+        </p>
+        {rows.length === 0 && (
+          <p className="mt-4 text-[13px]">
+            No objects selected —{' '}
+            <Link to="/catalogue" className="font-semibold text-ink underline">
+              open catalogue
+            </Link>
+          </p>
+        )}
+      </Card>
     </div>
   );
 }
