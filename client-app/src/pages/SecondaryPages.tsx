@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Download, Search } from 'lucide-react';
 import {
   Card,
@@ -7,75 +7,39 @@ import {
   SectionLabel,
   StatusPill,
 } from '../components/ui/primitives';
-
-const PIPELINE_STAGES = [
-  'Mandated',
-  'Documentation',
-  'Owner Research',
-  'Outreach',
-  'Owner Response',
-  'Evaluation',
-  'Offer',
-  'Negotiation',
-  'Notary',
-  'Closing',
-];
-
-const PIPELINE_ITEMS = [
-  {
-    id: 'A-041',
-    location: 'Stuttgart-Süd',
-    stage: 'Owner Response',
-    stageIdx: 4,
-    pct: 55,
-    risk: 'medium' as const,
-    agent: 'M. K.',
-    updated: '2d ago',
-    next: 'Awaiting owner reply',
-    missing: 'Grundbuch extract',
-  },
-  {
-    id: 'B-017',
-    location: 'Karlsruhe',
-    stage: 'Evaluation',
-    stageIdx: 5,
-    pct: 45,
-    risk: 'low' as const,
-    agent: 'L. R.',
-    updated: '5h ago',
-    next: 'Bank valuation package in preparation',
-    missing: 'Energy certificate',
-  },
-  {
-    id: 'A-058',
-    location: 'Stuttgart-Ost',
-    stage: 'Offer Prepared',
-    stageIdx: 6,
-    pct: 70,
-    risk: 'low' as const,
-    agent: 'M. K.',
-    updated: '1d ago',
-    next: 'Client approval required',
-    missing: 'None',
-  },
-];
-
-const DOCUMENTS = [
-  { name: 'Buy-Side Mandate Agreement.pdf', category: 'Contracts', object: 'Portfolio', status: 'SIGNED', date: '12 Jun 2026', size: '420 KB', tone: 'success' as const },
-  { name: 'NDA — Freeman Capital.pdf', category: 'Contracts', object: 'Portfolio', status: 'SIGNED', date: '10 Jun 2026', size: '180 KB', tone: 'success' as const },
-  { name: 'A-041 Bank Valuation Report.pdf', category: 'Bank Files', object: 'A-041', status: 'FINAL', date: '2 Jul 2026', size: '2.1 MB', tone: 'success' as const },
-  { name: 'C-102 Ownership Structure.pdf', category: 'Bank Files', object: 'C-102', status: 'MISSING', date: '—', size: '—', tone: 'danger' as const },
-  { name: 'A-041 Energy Certificate.pdf', category: 'Evaluation Files', object: 'A-041', status: 'PENDING REVIEW', date: '—', size: '—', tone: 'warning' as const },
-  { name: 'B-017 Site Photos.zip', category: 'Evaluation Files', object: 'B-017', status: 'FINAL', date: '28 Jun 2026', size: '14.2 MB', tone: 'success' as const },
-  { name: 'A-058 Offer Letter Draft.pdf', category: 'Offer Documents', object: 'A-058', status: 'DRAFT', date: '5 Jul 2026', size: '188 KB', tone: 'warning' as const },
-];
-
-const SAVED_ITEMS = [
-  { id: 'B-064', location: 'Karlsruhe', type: 'Mixed-Use', thesis: 'Buy and Hold', risk: 'medium' as const, score: 76, ticket: '€3.4M' },
-  { id: 'D-014', location: 'Tübingen', type: 'Residential', thesis: 'Repositioning', risk: 'low' as const, score: 71, ticket: '€2.9M' },
-];
+import {
+  displayCode,
+  fetchDocuments,
+  fetchPipeline,
+  fetchSaved,
+  toggleSelectionApi,
+  type DocumentRow,
+  type PipelineItem,
+  type SavedItem,
+} from '../api/client';
+import { useApp } from '../context/AppContext';
 
 export function PipelinePage() {
+  const [items, setItems] = useState<PipelineItem[]>([]);
+
+  useEffect(() => {
+    fetchPipeline().then(setItems);
+  }, []);
+
+  if (!items.length) {
+    return (
+      <div className="px-8 py-8">
+        <PageHeader
+          title="Pipeline"
+          subtitle="Live progress on every mandated object — what stage it's in, what happens next, what's blocking it."
+        />
+        <Card className="p-8 text-center text-[13px] text-muted">
+          No pipeline items yet. Select opportunities and prepare a mandate to begin.
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="px-8 py-8">
       <PageHeader
@@ -83,12 +47,12 @@ export function PipelinePage() {
         subtitle="Live progress on every mandated object — what stage it's in, what happens next, what's blocking it."
       />
 
-      {PIPELINE_ITEMS.map((item) => (
-        <Card key={item.id} className="mb-5 p-6">
+      {items.map((item) => (
+        <Card key={item.code} className="mb-5 p-6">
           <div className="flex items-start justify-between">
             <div>
               <div className="text-[16px] font-semibold">
-                #{item.id} · {item.location}
+                {displayCode(item.code)} · {item.location}
               </div>
               <div className="mt-0.5 text-[12px] text-muted">Stage: {item.stage}</div>
             </div>
@@ -133,14 +97,16 @@ export function PipelinePage() {
           <div className="relative mt-8">
             <div className="absolute top-1.5 right-0 left-0 h-px bg-border" />
             <div className="relative flex justify-between">
-              {PIPELINE_STAGES.map((stage, i) => (
-                <div key={stage} className="flex flex-col items-center" style={{ width: `${100 / PIPELINE_STAGES.length}%` }}>
+              {item.stages.map((stage, i) => (
+                <div
+                  key={stage}
+                  className="flex flex-col items-center"
+                  style={{ width: `${100 / item.stages.length}%` }}
+                >
                   <div
                     className={[
                       'relative z-10 h-3 w-3 rounded-full border-2',
-                      i <= item.stageIdx
-                        ? 'border-ink bg-ink'
-                        : 'border-border bg-white',
+                      i <= item.stageIdx ? 'border-ink bg-ink' : 'border-border bg-white',
                       i === item.stageIdx ? 'ring-2 ring-ink/20' : '',
                     ].join(' ')}
                   />
@@ -160,10 +126,15 @@ export function PipelinePage() {
 export function DocumentsPage() {
   const [filter, setFilter] = useState('All');
   const [query, setQuery] = useState('');
+  const [documents, setDocuments] = useState<DocumentRow[]>([]);
+
+  useEffect(() => {
+    fetchDocuments().then(setDocuments);
+  }, []);
 
   const categories = ['All', 'Contracts', 'Bank Files', 'Evaluation Files', 'Offer Documents'];
 
-  const filtered = DOCUMENTS.filter((d) => {
+  const filtered = documents.filter((d) => {
     if (filter !== 'All' && d.category !== filter) return false;
     if (query && !d.name.toLowerCase().includes(query.toLowerCase())) return false;
     return true;
@@ -204,108 +175,132 @@ export function DocumentsPage() {
       </div>
 
       <Card className="overflow-hidden">
-        <table className="w-full text-left text-[13px]">
-          <thead className="border-b border-border text-[10px] font-semibold tracking-wider text-muted uppercase">
-            <tr>
-              <th className="px-6 py-3">Document</th>
-              <th className="px-4 py-3">Category</th>
-              <th className="px-4 py-3">Object</th>
-              <th className="px-4 py-3">Status</th>
-              <th className="px-4 py-3">Date</th>
-              <th className="px-4 py-3">Size</th>
-              <th className="px-4 py-3" />
-            </tr>
-          </thead>
-          <tbody>
-            {filtered.map((doc) => (
-              <tr key={doc.name} className="border-b border-border">
-                <td className="px-6 py-4 font-semibold">{doc.name}</td>
-                <td className="px-4 py-4 text-muted">{doc.category}</td>
-                <td className="px-4 py-4 text-muted">{doc.object}</td>
-                <td className="px-4 py-4">
-                  <StatusPill label={doc.status} tone={doc.tone} />
-                </td>
-                <td className="px-4 py-4 text-muted">{doc.date}</td>
-                <td className="px-4 py-4 text-muted">{doc.size}</td>
-                <td className="px-4 py-4 text-right">
-                  <button type="button" className="text-muted hover:text-ink">
-                    <Download size={16} />
-                  </button>
-                </td>
+        {filtered.length === 0 ? (
+          <div className="p-8 text-center text-[13px] text-muted">No documents found.</div>
+        ) : (
+          <table className="w-full text-left text-[13px]">
+            <thead className="border-b border-border text-[10px] font-semibold tracking-wider text-muted uppercase">
+              <tr>
+                <th className="px-6 py-3">Document</th>
+                <th className="px-4 py-3">Category</th>
+                <th className="px-4 py-3">Object</th>
+                <th className="px-4 py-3">Status</th>
+                <th className="px-4 py-3">Date</th>
+                <th className="px-4 py-3">Size</th>
+                <th className="px-4 py-3" />
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {filtered.map((doc) => (
+                <tr key={`${doc.name}-${doc.object}`} className="border-b border-border">
+                  <td className="px-6 py-4 font-semibold">{doc.name}</td>
+                  <td className="px-4 py-4 text-muted">{doc.category}</td>
+                  <td className="px-4 py-4 text-muted">{doc.object}</td>
+                  <td className="px-4 py-4">
+                    <StatusPill label={doc.status} tone={doc.tone} />
+                  </td>
+                  <td className="px-4 py-4 text-muted">{doc.date}</td>
+                  <td className="px-4 py-4 text-muted">{doc.size}</td>
+                  <td className="px-4 py-4 text-right">
+                    <button type="button" className="text-muted hover:text-ink">
+                      <Download size={16} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </Card>
     </div>
   );
 }
 
 export function SavedOpportunitiesPage() {
+  const [items, setItems] = useState<SavedItem[]>([]);
+  const { refreshSelection } = useApp();
+
+  useEffect(() => {
+    fetchSaved().then(setItems);
+  }, []);
+
+  async function moveToSelected(objectId: string) {
+    await toggleSelectionApi(objectId);
+    await refreshSelection();
+    setItems((prev) => prev.filter((i) => i.id !== objectId));
+  }
+
   return (
     <div className="px-8 py-8">
       <PageHeader
         title="Saved Opportunities"
-        subtitle="2 opportunities saved for later — not yet selected for mandate."
+        subtitle={`${items.length} opportunit${items.length === 1 ? 'y' : 'ies'} saved for later — not yet selected for mandate.`}
       />
 
-      <div className="grid grid-cols-2 gap-5">
-        {SAVED_ITEMS.map((item) => (
-          <Card key={item.id} className="overflow-hidden">
-            <div className="p-5">
-              <div className="text-[18px] font-semibold">#{item.id}</div>
-              <div className="text-[13px] text-muted">
-                {item.location} · {item.type}
-              </div>
-              <div className="mt-3 flex gap-2">
-                <span className="rounded bg-gray-100 px-2 py-1 text-[10px] font-semibold text-muted">
-                  {item.thesis}
-                </span>
-                <StatusPill
-                  label={`Risk: ${item.risk}`}
-                  tone={item.risk === 'low' ? 'success' : 'warning'}
-                />
-              </div>
-              <div className="mt-4 flex items-end justify-between">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <div className="h-1.5 w-16 overflow-hidden rounded-full bg-tan">
-                      <div
-                        className="h-full rounded-full bg-ink"
-                        style={{ width: `${item.score}%` }}
-                      />
-                    </div>
-                    <span className="text-[13px] font-semibold">{item.score}</span>
-                  </div>
+      {items.length === 0 ? (
+        <Card className="p-8 text-center text-[13px] text-muted">
+          No saved opportunities. Bookmark items from the catalogue to review later.
+        </Card>
+      ) : (
+        <div className="grid grid-cols-2 gap-5">
+          {items.map((item) => (
+            <Card key={item.id} className="overflow-hidden">
+              <div className="p-5">
+                <div className="text-[18px] font-semibold">{displayCode(item.id)}</div>
+                <div className="text-[13px] text-muted">
+                  {item.location} · {item.type}
                 </div>
-                <div className="text-[18px] font-semibold">{item.ticket}</div>
+                <div className="mt-3 flex gap-2">
+                  <span className="rounded bg-gray-100 px-2 py-1 text-[10px] font-semibold text-muted">
+                    {item.thesis}
+                  </span>
+                  <StatusPill
+                    label={`Risk: ${item.risk}`}
+                    tone={item.risk === 'low' ? 'success' : 'warning'}
+                  />
+                </div>
+                <div className="mt-4 flex items-end justify-between">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <div className="h-1.5 w-16 overflow-hidden rounded-full bg-tan">
+                        <div
+                          className="h-full rounded-full bg-ink"
+                          style={{ width: `${Math.min(100, item.score)}%` }}
+                        />
+                      </div>
+                      <span className="text-[13px] font-semibold">{item.score}</span>
+                    </div>
+                  </div>
+                  <div className="text-[18px] font-semibold">{item.ticket}</div>
+                </div>
               </div>
-            </div>
-            <div className="flex items-center justify-between border-t border-border px-5 py-4">
-              <Link
-                to="/catalogue"
-                className="text-[12px] font-semibold text-ink hover:underline"
-              >
-                View Analysis
-              </Link>
-              <div className="flex gap-2">
-                <button
-                  type="button"
-                  className="rounded-md border border-border px-3 py-1.5 text-[11px] font-semibold"
+              <div className="flex items-center justify-between border-t border-border px-5 py-4">
+                <Link
+                  to="/catalogue"
+                  className="text-[12px] font-semibold text-ink hover:underline"
                 >
-                  REMOVE
-                </button>
-                <button
-                  type="button"
-                  className="rounded-md bg-ink px-3 py-1.5 text-[11px] font-semibold text-white"
-                >
-                  MOVE TO SELECTED
-                </button>
+                  View Analysis
+                </Link>
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    className="rounded-md border border-border px-3 py-1.5 text-[11px] font-semibold"
+                  >
+                    REMOVE
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => moveToSelected(item.id)}
+                    className="rounded-md bg-ink px-3 py-1.5 text-[11px] font-semibold text-white"
+                  >
+                    MOVE TO SELECTED
+                  </button>
+                </div>
               </div>
-            </div>
-          </Card>
-        ))}
-      </div>
+            </Card>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -331,7 +326,7 @@ function Toggle({ on }: { on: boolean }) {
 export function SettingsPage() {
   const profileRows = [
     { label: 'Name', value: 'Alex Freeman' },
-    { label: 'Email', value: 'alex.freeman@freemancapital.com' },
+    { label: 'Email', value: 'alex@freemancapital.com' },
     { label: 'Role', value: 'Managing Director' },
     { label: 'Phone', value: '+49 711 555 0148' },
   ];

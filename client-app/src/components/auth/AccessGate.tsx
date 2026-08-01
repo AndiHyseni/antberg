@@ -1,6 +1,7 @@
 import { Navigate, Outlet, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getAccessToken, setAccessToken, validateAccessDetailed } from '../../api/client';
+import { AntbergLogo } from '../ui/AntbergLogo';
 
 export function AccessGate() {
   const token = getAccessToken();
@@ -32,7 +33,8 @@ export function AccessPage() {
 
   if (checking) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-sidebar text-white">
+      <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-sidebar text-white">
+        <AntbergLogo />
         <p className="text-sm text-white/70">Verifying access…</p>
       </div>
     );
@@ -41,6 +43,9 @@ export function AccessPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-sidebar px-6">
       <div className="w-full max-w-md rounded-xl bg-white p-8 text-center shadow-xl">
+        <div className="mb-6 flex justify-center rounded-lg bg-sidebar px-6 py-4">
+          <AntbergLogo />
+        </div>
         <div className="mb-2 text-[11px] font-semibold tracking-[0.18em] text-muted">ANTBERG PROGRAM</div>
         <h1 className="text-xl font-semibold text-ink">Internal access required</h1>
         <p className="mt-2 text-sm text-muted">

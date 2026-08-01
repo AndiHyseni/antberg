@@ -2,14 +2,30 @@ import { Link } from 'react-router-dom';
 import { Plus } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Card, OutlineButton, PageHeader, SectionLabel } from '../components/ui/primitives';
-import { displayCode, fetchCatalog, parseTicketMid } from '../api/client';
+import { displayCode, fetchCatalog, fetchOverview, parseTicketMid } from '../api/client';
 import { useApp } from '../context/AppContext';
+
+function formatCapital(eur: number): string {
+  if (eur >= 1_000_000) return `€${(eur / 1_000_000).toFixed(1)}M`;
+  if (eur >= 1_000) return `€${Math.round(eur / 1000)}K`;
+  return `€${Math.round(eur)}`;
+}
 
 export function OverviewPage() {
   const { selection, setCatalogCount } = useApp();
   const [topMatches, setTopMatches] = useState<
     { id: string; label: string; score: number; ticket: string }[]
   >([]);
+  const [kpis, setKpis] = useState({
+    activeSearches: '—',
+    newMatches: '—',
+    inEvaluation: '—',
+    capital: '—',
+  });
+  const [pipeline, setPipeline] = useState<
+    { code: string; place: string; status: string; pct: number }[]
+  >([]);
+  const [activity, setActivity] = useState<{ text: string; time: string }[]>([]);
 
   useEffect(() => {
     fetchCatalog()
@@ -25,9 +41,31 @@ export function OverviewPage() {
         );
       })
       .catch(() => {});
+
+    fetchOverview().then((data) => {
+      if (data.stats) {
+        setKpis({
+          activeSearches: String(data.stats.active_searches),
+          newMatches: String(Math.min(3, data.stats.catalog_total)),
+          inEvaluation: String(data.stats.pipeline_count),
+          capital: formatCapital(data.stats.pipeline_capital),
+        });
+      }
+      if (data.pipeline.length) {
+        setPipeline(
+          data.pipeline.map((p) => ({
+            code: displayCode(p.code),
+            place: p.place,
+            status: p.status,
+            pct: p.pct,
+          }))
+        );
+      }
+      if (data.activity.length) setActivity(data.activity);
+    });
   }, [setCatalogCount]);
 
-  const selectedCount = selection.length || 4;
+  const selectedCount = selection.length;
 
   return (
     <div className="px-8 py-8">
@@ -47,10 +85,10 @@ export function OverviewPage() {
 
       <div className="mb-8 grid grid-cols-4 gap-4">
         {[
-          { label: 'ACTIVE SEARCHES', value: '2', sub: 'Scouting orders currently scanning' },
-          { label: 'NEW MATCHES', value: '3', sub: 'Unreviewed in the catalogue' },
-          { label: 'IN EVALUATION', value: '4', sub: 'Mandated objects in process' },
-          { label: 'CAPITAL IN PIPELINE', value: '€18.6M', sub: 'Across mandated objects' },
+          { label: 'ACTIVE SEARCHES', value: kpis.activeSearches, sub: 'Scouting orders currently scanning' },
+          { label: 'NEW MATCHES', value: kpis.newMatches, sub: 'Unreviewed in the catalogue' },
+          { label: 'IN EVALUATION', value: kpis.inEvaluation, sub: 'Mandated objects in process' },
+          { label: 'CAPITAL IN PIPELINE', value: kpis.capital, sub: 'Across mandated objects' },
         ].map((kpi) => (
           <Card key={kpi.label} className="p-5">
             <div className="text-[10px] font-semibold tracking-[0.1em] text-muted">{kpi.label}</div>
@@ -71,7 +109,7 @@ export function OverviewPage() {
           },
           {
             title: 'SELECTED',
-            desc: `${selectedCount} opportunities selected — ready to generate mandate`,
+            desc: `${selectedCount} opportunit${selectedCount === 1 ? 'y' : 'ies'} selected — ready to generate mandate`,
             to: '/mandate',
             btn: 'PREPARE MANDATE',
           },
@@ -96,11 +134,7 @@ export function OverviewPage() {
 
       <SectionLabel>New matches</SectionLabel>
       <Card className="mb-8 divide-y divide-border">
-        {(topMatches.length ? topMatches : [
-          { id: '#A-023', label: 'Ludwigsburg · Residential · Core', score: 79, ticket: '€2.8M' },
-          { id: '#A-041', label: 'Stuttgart-Süd · Mixed-Use', score: 87, ticket: '€4.6M' },
-          { id: '#A-058', label: 'Esslingen · Residential', score: 74, ticket: '€3.1M' },
-        ]).map((m) => (
+        {(topMatches.length ? topMatches : []).map((m) => (
           <div key={m.id} className="flex items-center justify-between px-6 py-4">
             <div>
               <span className="font-semibold">{m.id}</span>
@@ -112,19 +146,18 @@ export function OverviewPage() {
             </div>
           </div>
         ))}
+        {!topMatches.length && (
+          <div className="px-6 py-4 text-[13px] text-muted">Loading catalogue matches…</div>
+        )}
       </Card>
 
       <SectionLabel>Pipeline highlights</SectionLabel>
       <Card className="mb-8 divide-y divide-border">
-        {[
-          { id: 'A-041', place: 'Stuttgart-Süd', status: 'Owner Response', pct: 55 },
-          { id: 'B-017', place: 'Karlsruhe', status: 'Evaluation', pct: 45 },
-          { id: 'A-058', place: 'Stuttgart-Ost', status: 'Offer Prepared', pct: 70 },
-        ].map((p) => (
-          <div key={p.id} className="px-6 py-4">
+        {(pipeline.length ? pipeline : []).map((p) => (
+          <div key={p.code} className="px-6 py-4">
             <div className="mb-2 flex items-center justify-between text-[13px]">
               <div>
-                <span className="font-semibold">{p.id}</span>
+                <span className="font-semibold">{p.code}</span>
                 <span className="mx-2 text-muted">·</span>
                 <span>{p.place}</span>
                 <span className="mx-2 text-muted">·</span>
@@ -137,15 +170,14 @@ export function OverviewPage() {
             </div>
           </div>
         ))}
+        {!pipeline.length && (
+          <div className="px-6 py-4 text-[13px] text-muted">No pipeline items yet.</div>
+        )}
       </Card>
 
       <SectionLabel>Recent activity</SectionLabel>
       <Card className="divide-y divide-border">
-        {[
-          { text: '#B-017 — Bank valuation package in preparation', time: '5h ago' },
-          { text: 'Scouting order #SO-104 completed — 100 opportunities', time: '1d ago' },
-          { text: '#A-041 — Mandate countersigned', time: '2d ago' },
-        ].map((a) => (
+        {(activity.length ? activity : []).map((a) => (
           <div key={a.text} className="flex items-center justify-between px-6 py-4 text-[13px]">
             <div className="flex items-center gap-3">
               <span className="h-1.5 w-1.5 rounded-full bg-muted" />
@@ -154,6 +186,9 @@ export function OverviewPage() {
             <span className="text-[12px] text-muted">{a.time}</span>
           </div>
         ))}
+        {!activity.length && (
+          <div className="px-6 py-4 text-[13px] text-muted">No recent activity.</div>
+        )}
       </Card>
     </div>
   );

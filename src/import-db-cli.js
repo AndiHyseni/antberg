@@ -3,6 +3,7 @@ import path from 'path';
 import mysql from 'mysql2/promise';
 import { fileURLToPath } from 'url';
 import { loadDatabaseEnv } from './db/loadEnv.js';
+import { seedOperationalData } from './db/seedOperational.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
@@ -509,17 +510,28 @@ async function main() {
       }
     }
 
+    console.log('Seeding operational data (orders, selections, pipeline)…');
+    const seedResult = await seedOperationalData(conn, 1);
+    if (seedResult.skipped) console.log('  Operational data already present — skipped.');
+    else console.log('  Operational demo data seeded.');
+
     const [[counts]] = await conn.query(`
       SELECT
         (SELECT COUNT(*) FROM properties) AS properties,
         (SELECT COUNT(*) FROM catalog_items) AS catalog_items,
         (SELECT COUNT(*) FROM dossiers) AS dossiers,
-        (SELECT COUNT(*) FROM evaluations) AS evaluations
+        (SELECT COUNT(*) FROM evaluations) AS evaluations,
+        (SELECT COUNT(*) FROM scouting_orders) AS scouting_orders,
+        (SELECT COUNT(*) FROM selections) AS selections,
+        (SELECT COUNT(*) FROM pipeline_items) AS pipeline_items
     `);
 
     console.log('Import complete.');
     console.log(
       `  properties: ${counts.properties}, catalog_items: ${counts.catalog_items}, dossiers: ${counts.dossiers}, evaluations: ${counts.evaluations}`
+    );
+    console.log(
+      `  scouting_orders: ${counts.scouting_orders}, selections: ${counts.selections}, pipeline_items: ${counts.pipeline_items}`
     );
   } finally {
     await conn.end();

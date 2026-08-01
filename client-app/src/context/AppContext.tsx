@@ -2,14 +2,15 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
   type ReactNode,
 } from 'react';
 import type { ScoutingOrder } from '../types';
 import { STRATEGY_OPTIONS } from '../types';
+import { fetchSelections, toggleSelectionApi, clearSelectionsApi } from '../api/client';
 
-const SELECTION_KEY = 'antberg_selection';
 const ORDER_KEY = 'antberg_order_draft';
 
 const defaultOrder: ScoutingOrder = {
@@ -25,14 +26,6 @@ const defaultOrder: ScoutingOrder = {
   signals: ['Energy pressure', 'Zoning upside', 'Underutilized land', 'Low rent vs market'],
   exclusions: [],
 };
-
-function loadSelection(): string[] {
-  try {
-    return JSON.parse(localStorage.getItem(SELECTION_KEY) ?? '[]');
-  } catch {
-    return [];
-  }
-}
 
 function loadOrder(): ScoutingOrder {
   try {
@@ -52,14 +45,32 @@ interface AppState {
   isSelected: (id: string) => boolean;
   catalogCount: number;
   setCatalogCount: (n: number) => void;
+  selectionLoaded: boolean;
+  refreshSelection: () => Promise<void>;
 }
 
 const AppContext = createContext<AppState | null>(null);
 
 export function AppProvider({ children }: { children: ReactNode }) {
   const [order, setOrderState] = useState<ScoutingOrder>(loadOrder);
-  const [selection, setSelection] = useState<string[]>(loadSelection);
+  const [selection, setSelection] = useState<string[]>([]);
+  const [selectionLoaded, setSelectionLoaded] = useState(false);
   const [catalogCount, setCatalogCount] = useState(100);
+
+  const refreshSelection = useCallback(async () => {
+    try {
+      const ids = await fetchSelections();
+      setSelection(ids);
+    } catch {
+      /* keep current selection on error */
+    } finally {
+      setSelectionLoaded(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    refreshSelection();
+  }, [refreshSelection]);
 
   const setOrder = useCallback((patch: Partial<ScoutingOrder>) => {
     setOrderState((prev) => {
@@ -73,21 +84,33 @@ export function AppProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
-  const persistSelection = useCallback((ids: string[]) => {
-    localStorage.setItem(SELECTION_KEY, JSON.stringify(ids));
-    setSelection(ids);
-  }, []);
-
   const toggleSelection = useCallback(
-    (id: string) => {
-      persistSelection(
-        selection.includes(id) ? selection.filter((x) => x !== id) : [...selection, id]
-      );
+    async (id: string) => {
+      const prev = selection;
+      const optimistic = prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id];
+      setSelection(optimistic);
+      try {
+        const result = await toggleSelectionApi(id);
+        if (!result.selected) {
+          setSelection((s) => s.filter((x) => x !== id));
+        } else {
+          setSelection((s) => (s.includes(id) ? s : [...s, id]));
+        }
+      } catch {
+        setSelection(prev);
+      }
     },
-    [selection, persistSelection]
+    [selection]
   );
 
-  const clearSelection = useCallback(() => persistSelection([]), [persistSelection]);
+  const clearSelection = useCallback(async () => {
+    setSelection([]);
+    try {
+      await clearSelectionsApi();
+    } catch {
+      await refreshSelection();
+    }
+  }, [refreshSelection]);
 
   const value = useMemo(
     () => ({
@@ -99,8 +122,19 @@ export function AppProvider({ children }: { children: ReactNode }) {
       isSelected: (id: string) => selection.includes(id),
       catalogCount,
       setCatalogCount,
+      selectionLoaded,
+      refreshSelection,
     }),
-    [order, setOrder, selection, toggleSelection, clearSelection, catalogCount]
+    [
+      order,
+      setOrder,
+      selection,
+      toggleSelection,
+      clearSelection,
+      catalogCount,
+      selectionLoaded,
+      refreshSelection,
+    ]
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
