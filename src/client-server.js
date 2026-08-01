@@ -17,11 +17,34 @@ import { confirmFact, syncDocumentsFromIntake } from './evaluation/facts.js';
 import { runEvaluationPipeline, recomputeFromCapex, renderReportHtml } from './evaluation/engine.js';
 import { buildSample28UnitIntake } from './evaluation/sampleObject.js';
 import { updateCapexComponent } from './evaluation/capex.js';
+import { isDatabaseAvailable } from './db/pool.js';
+import { fetchCatalogFromDb } from './db/catalog.js';
+import {
+  listSelections,
+  toggleSelection,
+  clearSelections,
+  listSaved,
+} from './db/selections.js';
+import {
+  createScoutingOrder,
+  listScoutingOrders,
+  formatOrderForApi,
+  saveDraftOrder,
+} from './db/scoutingOrders.js';
+import { listPipeline } from './db/pipeline.js';
+import { listDocuments } from './db/documents.js';
+import {
+  listNotifications,
+  listRecentActivity,
+  getOverviewStats,
+  markAllNotificationsRead,
+} from './db/activity.js';
+import { listEvaluationsFromDb, listMandateSummary } from './db/evaluations.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
 const CLIENT_DIST = path.join(ROOT, 'client-app', 'dist');
-const ACCESS_TOKEN = process.env.ANTBERG_ACCESS_TOKEN ?? 'antberg-internal-2026';
+const ACCESS_TOKEN = (process.env.ANTBERG_ACCESS_TOKEN ?? 'antberg-internal-2026').trim();
 const DEFAULT_CATALOG = path.join(ROOT, 'data', 'catalog.json');
 const DEFAULT_CANDIDATES =
   'output/stuttgart-alkis-2026-07-03/redevelopment-candidates.xlsx';
@@ -103,8 +126,17 @@ function json(res, payload, status = 200) {
   res.end(JSON.stringify(payload));
 }
 
+async function loadCatalogPayload() {
+  if (await isDatabaseAvailable()) {
+    const fromDb = await fetchCatalogFromDb();
+    if (fromDb) return fromDb;
+  }
+  return JSON.parse(await fs.readFile(DEFAULT_CATALOG, 'utf8'));
+}
+
 async function main() {
   const port = Number(process.env.PORT) || 4173;
+  const dbOk = await isDatabaseAvailable();
 
   try {
     await fs.access(path.join(CLIENT_DIST, 'index.html'));
@@ -122,7 +154,7 @@ async function main() {
       if (req.method === 'OPTIONS') {
         res.writeHead(204, {
           'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+          'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS',
           'Access-Control-Allow-Headers': 'Content-Type',
         });
         res.end();
@@ -136,18 +168,175 @@ async function main() {
 
       if (url.pathname === '/api/access/validate' && req.method === 'POST') {
         const body = JSON.parse((await readBody(req)) || '{}');
-        const token = String(body.token ?? '');
+        const token = String(body.token ?? '').trim();
         json(res, { valid: token.length > 0 && token === ACCESS_TOKEN });
         return;
       }
 
       if (url.pathname === '/api/catalog' && req.method === 'GET') {
-        const raw = await fs.readFile(DEFAULT_CATALOG, 'utf8');
-        res.writeHead(200, {
-          'Content-Type': 'application/json; charset=utf-8',
-          'Access-Control-Allow-Origin': '*',
-        });
-        res.end(raw);
+        const catalog = await loadCatalogPayload();
+        json(res, catalog);
+        return;
+      }
+
+      if (url.pathname === '/api/selections' && req.method === 'GET') {
+        if (await isDatabaseAvailable()) {
+          const rows = await listSelections();
+          json(res, { selections: rows.map((r) => r.object_id) });
+          return;
+        }
+        json(res, { selections: [] });
+        return;
+      }
+
+      if (url.pathname === '/api/selections/toggle' && req.method === 'POST') {
+        const body = JSON.parse((await readBody(req)) || '{}');
+        const objectId = String(body.object_id ?? '');
+        if (!objectId) {
+          json(res, { error: 'object_id required' }, 400);
+          return;
+        }
+        if (await isDatabaseAvailable()) {
+          const result = await toggleSelection(objectId);
+          json(res, result);
+          return;
+        }
+        json(res, { selected: true, object_id: objectId, fallback: true });
+        return;
+      }
+
+      if (url.pathname === '/api/selections' && req.method === 'DELETE') {
+        if (await isDatabaseAvailable()) {
+          await clearSelections();
+        }
+        json(res, { ok: true });
+        return;
+      }
+
+      if (url.pathname === '/api/scouting-orders' && req.method === 'GET') {
+        const status = url.searchParams.get('status') ?? undefined;
+        if (await isDatabaseAvailable()) {
+          const rows = await listScoutingOrders(status ?? undefined);
+          json(res, { orders: rows.map(formatOrderForApi) });
+          return;
+        }
+        json(res, { orders: [] });
+        return;
+      }
+
+      if (url.pathname === '/api/scouting-orders/draft' && req.method === 'POST') {
+        const body = JSON.parse((await readBody(req)) || '{}');
+        if (await isDatabaseAvailable()) {
+          const id = await saveDraftOrder(body);
+          json(res, { ok: true, id });
+          return;
+        }
+        json(res, { ok: true, fallback: true });
+        return;
+      }
+
+      if (url.pathname === '/api/pipeline' && req.method === 'GET') {
+        if (await isDatabaseAvailable()) {
+          json(res, { items: await listPipeline() });
+          return;
+        }
+        json(res, { items: [] });
+        return;
+      }
+
+      if (url.pathname === '/api/documents' && req.method === 'GET') {
+        if (await isDatabaseAvailable()) {
+          json(res, { documents: await listDocuments() });
+          return;
+        }
+        json(res, { documents: [] });
+        return;
+      }
+
+      if (url.pathname === '/api/notifications' && req.method === 'GET') {
+        if (await isDatabaseAvailable()) {
+          json(res, { notifications: await listNotifications() });
+          return;
+        }
+        json(res, { notifications: [] });
+        return;
+      }
+
+      if (url.pathname === '/api/notifications/read' && req.method === 'POST') {
+        if (await isDatabaseAvailable()) {
+          await markAllNotificationsRead();
+        }
+        json(res, { ok: true });
+        return;
+      }
+
+      if (url.pathname === '/api/overview' && req.method === 'GET') {
+        if (await isDatabaseAvailable()) {
+          const stats = await getOverviewStats();
+          const activity = await listRecentActivity(undefined, 5);
+          const pipeline = await listPipeline();
+          json(res, {
+            stats: {
+              active_searches: Number(stats.active_searches ?? 0),
+              catalog_total: Number(stats.catalog_total ?? 0),
+              selected_count: Number(stats.selected_count ?? 0),
+              pipeline_count: Number(stats.pipeline_count ?? 0),
+              pipeline_capital: Number(stats.pipeline_capital ?? 0),
+            },
+            activity,
+            pipeline: pipeline.slice(0, 3).map((p) => ({
+              code: p.code,
+              place: p.location,
+              status: p.stage,
+              pct: p.pct,
+            })),
+          });
+          return;
+        }
+        json(res, { stats: null, activity: [], pipeline: [] });
+        return;
+      }
+
+      if (url.pathname === '/api/saved' && req.method === 'GET') {
+        if (await isDatabaseAvailable()) {
+          const rows = await listSaved();
+          json(res, {
+            items: rows.map((r) => {
+              const ticketMin = r.ticket_low_eur != null ? Number(r.ticket_low_eur) : null;
+              const ticketMax = r.ticket_high_eur != null ? Number(r.ticket_high_eur) : null;
+              const mid =
+                ticketMin != null && ticketMax != null
+                  ? (ticketMin + ticketMax) / 2
+                  : ticketMax ?? ticketMin ?? 0;
+              const ticket =
+                mid >= 1_000_000
+                  ? `€${(mid / 1_000_000).toFixed(1)}M`
+                  : `€${Math.round(mid / 1000)}K`;
+              return {
+                id: r.object_id,
+                code: r.object_id,
+                location: r.district ?? '—',
+                type: r.asset_type ?? '—',
+                thesis: r.strategy_label ?? '—',
+                risk: 'medium',
+                score: Math.round(Number(r.score ?? 0)),
+                ticket,
+              };
+            }),
+          });
+          return;
+        }
+        json(res, { items: [] });
+        return;
+      }
+
+      if (url.pathname === '/api/mandate/summary' && req.method === 'GET') {
+        if (await isDatabaseAvailable()) {
+          const rows = await listMandateSummary();
+          json(res, { items: rows });
+          return;
+        }
+        json(res, { items: [] });
         return;
       }
 
@@ -157,13 +346,29 @@ async function main() {
         const catalog = await buildCatalogFromOrder(body);
         await fs.mkdir(path.dirname(DEFAULT_CATALOG), { recursive: true });
         await fs.writeFile(DEFAULT_CATALOG, JSON.stringify(catalog, null, 2), 'utf8');
+
+        if (await isDatabaseAvailable()) {
+          await createScoutingOrder({
+            strategy: body.strategy,
+            strategyLabel: body.strategyLabel,
+            country: body.country ?? 'Germany',
+            state: body.state,
+            city: body.city,
+            radiusKm: body.radiusKm ?? 40,
+            ticket: body.ticket,
+            assetTypes: body.assetTypes,
+            signals: body.signals,
+            estimatedScanScope: body.estimatedScanScope,
+          });
+        }
+
         json(res, { ok: true, catalog });
         return;
       }
 
       if (url.pathname === '/api/dossier' && req.method === 'GET') {
         const id = url.searchParams.get('id');
-        const raw = JSON.parse(await fs.readFile(DEFAULT_CATALOG, 'utf8'));
+        const raw = await loadCatalogPayload();
         const dossier = raw.dossiers?.[id ?? ''];
         if (!dossier) {
           json(res, { error: 'Not found' }, 404);
@@ -174,6 +379,13 @@ async function main() {
       }
 
       if (url.pathname === '/api/evaluations' && req.method === 'GET') {
+        if (await isDatabaseAvailable()) {
+          const evaluations = await listEvaluationsFromDb();
+          if (evaluations.length) {
+            json(res, { evaluations });
+            return;
+          }
+        }
         json(res, { evaluations: await listEvaluations() });
         return;
       }
@@ -309,6 +521,7 @@ async function main() {
     console.log(`Antberg Program → http://localhost:${port}`);
     console.log(`  Internal link: http://localhost:${port}/access/${ACCESS_TOKEN}`);
     console.log(`  Serving UI from ${CLIENT}`);
+    console.log(`  Database: ${dbOk ? 'connected (MySQL)' : 'unavailable — using JSON files'}`);
   });
 }
 

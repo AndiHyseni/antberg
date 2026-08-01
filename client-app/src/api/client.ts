@@ -15,14 +15,35 @@ export function clearAccessToken() {
 }
 
 export async function validateAccess(token: string): Promise<boolean> {
-  const res = await fetch('/api/access/validate', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ token }),
-  });
-  if (!res.ok) return false;
-  const data = await res.json();
-  return Boolean(data.valid);
+  try {
+    const res = await fetch('/api/access/validate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: token.trim() }),
+    });
+    if (!res.ok) return false;
+    const data = await res.json();
+    return Boolean(data.valid);
+  } catch {
+    return false;
+  }
+}
+
+export type AccessValidationResult = 'valid' | 'invalid' | 'unreachable';
+
+export async function validateAccessDetailed(token: string): Promise<AccessValidationResult> {
+  try {
+    const res = await fetch('/api/access/validate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: token.trim() }),
+    });
+    if (!res.ok) return 'unreachable';
+    const data = await res.json();
+    return data.valid ? 'valid' : 'invalid';
+  } catch {
+    return 'unreachable';
+  }
 }
 
 export async function fetchCatalog(): Promise<Catalog> {
@@ -86,4 +107,170 @@ export function upsideFromDossier(d: { values?: { upside_low?: number; upside_hi
   const pctLow = Math.round((low / today) * 100);
   const pctHigh = Math.round((high / today) * 100);
   return `+${pctLow}–${pctHigh}%`;
+}
+
+export interface ScoutingOrderRow {
+  id?: number;
+  name: string;
+  thesis?: string;
+  region?: string;
+  ticket?: string;
+  matches?: number;
+  activity?: string;
+  submitted?: string;
+  saved?: string;
+  completed?: string;
+  status?: string;
+}
+
+export interface PipelineItem {
+  id: string;
+  code: string;
+  location: string;
+  stage: string;
+  stageIdx: number;
+  pct: number;
+  risk: 'low' | 'medium' | 'high';
+  agent: string;
+  updated: string;
+  next: string;
+  missing: string;
+  stages: string[];
+}
+
+export interface DocumentRow {
+  name: string;
+  category: string;
+  object: string;
+  status: string;
+  tone: 'success' | 'warning' | 'danger' | 'neutral';
+  date: string;
+  size: string;
+}
+
+export interface SavedItem {
+  id: string;
+  code: string;
+  location: string;
+  type: string;
+  thesis: string;
+  risk: 'low' | 'medium' | 'high';
+  score: number;
+  ticket: string;
+}
+
+export interface NotificationRow {
+  id: string;
+  category: string;
+  message: string;
+  timestamp: string;
+  read: boolean;
+}
+
+export interface OverviewPayload {
+  stats: {
+    active_searches: number;
+    catalog_total: number;
+    selected_count: number;
+    pipeline_count: number;
+    pipeline_capital: number;
+  } | null;
+  activity: { text: string; time: string }[];
+  pipeline: { id: string; code: string; place: string; status: string; pct: number }[];
+}
+
+export async function fetchSelections(): Promise<string[]> {
+  const res = await fetch('/api/selections');
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.selections ?? [];
+}
+
+export async function toggleSelectionApi(objectId: string): Promise<{ selected: boolean }> {
+  const res = await fetch('/api/selections/toggle', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ object_id: objectId }),
+  });
+  if (!res.ok) throw new Error('Selection failed');
+  return res.json();
+}
+
+export async function clearSelectionsApi(): Promise<void> {
+  await fetch('/api/selections', { method: 'DELETE' });
+}
+
+export async function fetchScoutingOrders(
+  status?: 'active' | 'draft' | 'completed'
+): Promise<ScoutingOrderRow[]> {
+  const q = status ? `?status=${status}` : '';
+  const res = await fetch(`/api/scouting-orders${q}`);
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.orders ?? [];
+}
+
+export async function saveDraftOrderApi(
+  order: ScoutingOrder,
+  estimatedScanScope?: number
+): Promise<void> {
+  await fetch('/api/scouting-orders/draft', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ ...order, estimatedScanScope }),
+  });
+}
+
+export async function fetchPipeline(): Promise<PipelineItem[]> {
+  const res = await fetch('/api/pipeline');
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.items ?? [];
+}
+
+export async function fetchDocuments(): Promise<DocumentRow[]> {
+  const res = await fetch('/api/documents');
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.documents ?? [];
+}
+
+export async function fetchSaved(): Promise<SavedItem[]> {
+  const res = await fetch('/api/saved');
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.items ?? [];
+}
+
+export async function fetchNotifications(): Promise<NotificationRow[]> {
+  const res = await fetch('/api/notifications');
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.notifications ?? [];
+}
+
+export async function markNotificationsRead(): Promise<void> {
+  await fetch('/api/notifications/read', { method: 'POST' });
+}
+
+export async function fetchOverview(): Promise<OverviewPayload> {
+  const res = await fetch('/api/overview');
+  if (!res.ok) return { stats: null, activity: [], pipeline: [] };
+  return res.json();
+}
+
+export async function fetchMandateSummary(): Promise<
+  {
+    object_id: string;
+    district: string;
+    score: number;
+    thesis: string;
+    ticket_low_eur: number;
+    ticket_high_eur: number;
+  }[]
+> {
+  const res = await fetch('/api/mandate/summary');
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.items ?? [];
 }

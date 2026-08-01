@@ -1,6 +1,6 @@
 import { Navigate, Outlet, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getAccessToken, setAccessToken, validateAccess } from '../../api/client';
+import { getAccessToken, setAccessToken, validateAccessDetailed } from '../../api/client';
 
 export function AccessGate() {
   const token = getAccessToken();
@@ -16,10 +16,13 @@ export function AccessPage() {
 
   useEffect(() => {
     if (!routeToken) return;
-    validateAccess(routeToken).then((ok: boolean) => {
-      if (ok) {
-        setAccessToken(routeToken);
+    validateAccessDetailed(routeToken.trim()).then((result) => {
+      if (result === 'valid') {
+        setAccessToken(routeToken.trim());
         navigate('/', { replace: true });
+      } else if (result === 'unreachable') {
+        setError('Server is waking up or unreachable. Wait a minute and refresh this page.');
+        setChecking(false);
       } else {
         setError('Invalid or expired access link.');
         setChecking(false);
