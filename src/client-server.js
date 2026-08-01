@@ -44,6 +44,10 @@ import { listEvaluationsFromDb, listMandateSummary } from './db/evaluations.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
 const CLIENT_DIST = path.join(ROOT, 'client-app', 'dist');
+const BUILD_ID =
+  process.env.RENDER_GIT_COMMIT?.slice(0, 7) ??
+  process.env.BUILD_ID ??
+  'local-dev';
 const ACCESS_TOKEN = (process.env.ANTBERG_ACCESS_TOKEN ?? 'antberg-internal-2026').trim();
 const DEFAULT_CATALOG = path.join(ROOT, 'data', 'catalog.json');
 const DEFAULT_CANDIDATES =
@@ -126,6 +130,19 @@ function json(res, payload, status = 200) {
   res.end(JSON.stringify(payload));
 }
 
+/**
+ * @param {string} relativePath
+ */
+function cacheControlFor(relativePath) {
+  if (relativePath === 'index.html' || !path.extname(relativePath)) {
+    return 'no-cache, no-store, must-revalidate';
+  }
+  if (relativePath.startsWith('assets/')) {
+    return 'public, max-age=31536000, immutable';
+  }
+  return 'public, max-age=3600';
+}
+
 async function loadCatalogPayload() {
   if (await isDatabaseAvailable()) {
     const fromDb = await fetchCatalogFromDb();
@@ -170,6 +187,15 @@ async function main() {
         const body = JSON.parse((await readBody(req)) || '{}');
         const token = String(body.token ?? '').trim();
         json(res, { valid: token.length > 0 && token === ACCESS_TOKEN });
+        return;
+      }
+
+      if (url.pathname === '/api/version' && req.method === 'GET') {
+        json(res, {
+          build_id: BUILD_ID,
+          render: Boolean(process.env.RENDER),
+          node_env: process.env.NODE_ENV ?? 'development',
+        });
         return;
       }
 
@@ -505,11 +531,17 @@ async function main() {
 
       try {
         const { data, type } = await serveStatic(filePath);
-        res.writeHead(200, { 'Content-Type': type });
+        res.writeHead(200, {
+          'Content-Type': type,
+          'Cache-Control': cacheControlFor(relativePath),
+        });
         res.end(data);
       } catch {
         const { data, type } = await serveStatic(path.join(CLIENT, 'index.html'));
-        res.writeHead(200, { 'Content-Type': type });
+        res.writeHead(200, {
+          'Content-Type': type,
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+        });
         res.end(data);
       }
     } catch (err) {
@@ -522,6 +554,7 @@ async function main() {
     console.log(`  Internal link: http://localhost:${port}/access/${ACCESS_TOKEN}`);
     console.log(`  Serving UI from ${CLIENT}`);
     console.log(`  Database: ${dbOk ? 'connected (MySQL)' : 'unavailable — using JSON files'}`);
+    console.log(`  Build: ${BUILD_ID}`);
   });
 }
 
