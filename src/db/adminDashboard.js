@@ -1,5 +1,42 @@
 import { query } from './pool.js';
 
+/**
+ * @param {string} [message]
+ * @param {Record<string, unknown> | null} [fileLayer]
+ * @param {Record<string, unknown> | null} [database]
+ * @param {string} [catalogSource]
+ */
+export function emptyAdminStats(message, fileLayer, database, catalogSource = 'json') {
+  const fl = /** @type {{ catalog_opportunities?: number; evaluations_files?: number; dossiers?: number } | null} */ (
+    fileLayer ?? null
+  );
+  const baseStats = {
+    clients: 0,
+    active_users: 0,
+    admins: 0,
+    active_orders: 0,
+    properties: fl?.catalog_opportunities ?? 0,
+    evaluations: fl?.evaluations_files ?? 0,
+    mandates: 0,
+    access_tokens: 0,
+    catalog_total: fl?.catalog_opportunities ?? 0,
+    dossiers: fl?.dossiers ?? 0,
+  };
+
+  return {
+    database_connected: false,
+    catalog_source: catalogSource,
+    message:
+      message ??
+      'MySQL is not connected. Platform KPIs below show bundled JSON data until you configure MYSQL_* on Render.',
+    stats: baseStats,
+    recent_activity: [],
+    clients: [],
+    database: database ?? null,
+    file_layer: fileLayer ?? null,
+  };
+}
+
 export async function getAdminStats() {
   const [[stats]] = await query(
     `SELECT
@@ -10,7 +47,8 @@ export async function getAdminStats() {
       (SELECT COUNT(*) FROM properties) AS properties,
       (SELECT COUNT(*) FROM evaluations) AS evaluations,
       (SELECT COUNT(*) FROM mandates WHERE status IN ('active','draft')) AS mandates,
-      (SELECT COUNT(*) FROM access_tokens WHERE revoked_at IS NULL) AS access_tokens
+      (SELECT COUNT(*) FROM access_tokens WHERE revoked_at IS NULL) AS access_tokens,
+      (SELECT COUNT(*) FROM dossiers) AS dossiers
      FROM DUAL`
   );
 
@@ -40,6 +78,8 @@ export async function getAdminStats() {
       evaluations: Number(stats.evaluations ?? 0),
       mandates: Number(stats.mandates ?? 0),
       access_tokens: Number(stats.access_tokens ?? 0),
+      catalog_total: Number(stats.properties ?? 0),
+      dossiers: Number(stats.dossiers ?? 0),
     },
     recent_activity: recentActivity.map((row) => ({
       id: Number(row.id),

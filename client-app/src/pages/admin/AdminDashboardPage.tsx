@@ -7,13 +7,30 @@ export function AdminDashboardPage() {
   const [data, setData] = useState<AdminStatsPayload | null>(null);
   const [error, setError] = useState('');
 
+  const [info, setInfo] = useState('');
+
   useEffect(() => {
     fetchAdminStats()
-      .then(setData)
-      .catch(() => setError('Could not load platform stats. Is MySQL connected?'));
+      .then((payload) => {
+        setData(payload);
+        setError('');
+        setInfo('');
+        if (payload.database_connected === false && payload.message) {
+          setError(payload.message);
+        } else if (payload.message) {
+          setInfo(payload.message);
+        }
+      })
+      .catch(() =>
+        setError(
+          'Could not load platform stats. Check /api/version for database status and server logs.'
+        )
+      );
   }, []);
 
   const stats = data?.stats;
+  const db = data?.database;
+  const file = data?.file_layer;
 
   return (
     <div className="px-8 py-8">
@@ -27,6 +44,56 @@ export function AdminDashboardPage() {
           {error}
         </Card>
       )}
+      {info && !error && (
+        <Card className="mb-6 border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900">{info}</Card>
+      )}
+
+      <SectionLabel>Database &amp; data</SectionLabel>
+      <Card className="mb-8 grid grid-cols-2 gap-0 divide-x divide-border md:grid-cols-4">
+        <div className="p-5">
+          <div className="text-[10px] font-semibold tracking-[0.1em] text-muted uppercase">MySQL</div>
+          <div className="mt-2 flex items-center gap-2">
+            <StatusPill
+              label={db?.connected ? 'connected' : 'offline'}
+              tone={db?.connected ? 'success' : 'warning'}
+            />
+          </div>
+          <div className="mt-2 text-[12px] text-muted">
+            {db ? `${db.user}@${db.host}:${db.port}` : '—'}
+          </div>
+          <div className="text-[12px] text-muted">Database: {db?.database ?? '—'}</div>
+        </div>
+        <div className="p-5">
+          <div className="text-[10px] font-semibold tracking-[0.1em] text-muted uppercase">
+            Catalogue source
+          </div>
+          <div className="mt-2">
+            <StatusPill
+              label={data?.catalog_source === 'mysql' ? 'mysql' : 'json file'}
+              tone={data?.catalog_source === 'mysql' ? 'success' : 'info'}
+            />
+          </div>
+          <div className="mt-2 text-[12px] text-muted">{file?.catalog_path ?? 'data/catalog.json'}</div>
+        </div>
+        <div className="p-5">
+          <div className="text-[10px] font-semibold tracking-[0.1em] text-muted uppercase">
+            Bundled catalogue
+          </div>
+          <div className="mt-2 text-[28px] font-semibold leading-none">
+            {file?.catalog_opportunities ?? '—'}
+          </div>
+          <div className="mt-1 text-[12px] text-muted">opportunities in JSON</div>
+        </div>
+        <div className="p-5">
+          <div className="text-[10px] font-semibold tracking-[0.1em] text-muted uppercase">
+            File evaluations
+          </div>
+          <div className="mt-2 text-[28px] font-semibold leading-none">
+            {file?.evaluations_files ?? '—'}
+          </div>
+          <div className="mt-1 text-[12px] text-muted">data/evaluations/*.json</div>
+        </div>
+      </Card>
 
       <div className="mb-8 grid grid-cols-4 gap-4">
         {[
@@ -44,10 +111,27 @@ export function AdminDashboardPage() {
 
       <div className="mb-8 grid grid-cols-4 gap-4">
         {[
+          { label: 'CATALOG (LIVE)', value: stats?.catalog_total ?? stats?.properties ?? '—' },
+          { label: 'DOSSIERS', value: stats?.dossiers ?? file?.dossiers ?? '—' },
           { label: 'EVALUATIONS', value: stats?.evaluations ?? '—' },
+          { label: 'PROPERTIES (DB)', value: stats?.properties ?? '—' },
+        ].map((kpi) => (
+          <Card key={kpi.label} className="p-5">
+            <div className="text-[10px] font-semibold tracking-[0.1em] text-muted">{kpi.label}</div>
+            <div className="mt-2 text-[28px] font-semibold leading-none">{kpi.value}</div>
+          </Card>
+        ))}
+      </div>
+
+      <div className="mb-8 grid grid-cols-4 gap-4">
+        {[
           { label: 'MANDATES', value: stats?.mandates ?? '—' },
           { label: 'ADMINS', value: stats?.admins ?? '—' },
           { label: 'ACCESS TOKENS', value: stats?.access_tokens ?? '—' },
+          {
+            label: 'SCAN OPPS (JSON)',
+            value: file?.scan_opportunities != null ? String(file.scan_opportunities) : '—',
+          },
         ].map((kpi) => (
           <Card key={kpi.label} className="p-5">
             <div className="text-[10px] font-semibold tracking-[0.1em] text-muted">{kpi.label}</div>

@@ -41,7 +41,7 @@ import {
 } from './db/activity.js';
 import { listEvaluationsFromDb, listMandateSummary } from './db/evaluations.js';
 import { adminLogin, adminLogout, resolveAdminSession } from './db/adminAuth.js';
-import { getAdminStats, listAllActivity } from './db/adminDashboard.js';
+import { getAdminStats, listAllActivity, emptyAdminStats } from './db/adminDashboard.js';
 import { listUsers, createUser, updateUser } from './db/adminUsers.js';
 import { listClients, createClient } from './db/adminClients.js';
 import {
@@ -50,6 +50,11 @@ import {
   revokeAccessToken,
 } from './db/adminAccessTokens.js';
 import { validateClientAccessToken } from './db/accessTokens.js';
+import {
+  getDatabaseMeta,
+  getFileLayerStats,
+  applyFileLayerToStats,
+} from './db/adminPlatformMeta.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
@@ -247,8 +252,39 @@ async function main() {
           json(res, { error: 'Unauthorized' }, 401);
           return;
         }
-        if (!(await adminDbRequired())) return;
-        json(res, await getAdminStats());
+        const dbOk = await isDatabaseAvailable();
+        const fileLayer = await getFileLayerStats(ROOT);
+        const database = await getDatabaseMeta(dbOk);
+
+        if (!dbOk) {
+          json(res, emptyAdminStats(undefined, fileLayer, database, 'json'));
+          return;
+        }
+        try {
+          const fromDb = await fetchCatalogFromDb();
+          const catalogSource = fromDb ? 'mysql' : 'json';
+          const payload = await getAdminStats();
+          json(res, {
+            ...payload,
+            stats: applyFileLayerToStats(payload.stats, fileLayer),
+            database_connected: true,
+            catalog_source: catalogSource,
+            message: catalogSource === 'json'
+              ? 'MySQL is connected but catalogue is still served from data/catalog.json. Run npm run import:db against this database.'
+              : null,
+            database,
+            file_layer: fileLayer,
+          });
+        } catch (err) {
+          json(res, {
+            ...emptyAdminStats(
+              `Database is reachable but stats failed: ${err.message}. On an existing DB, run database/migrations/001_admin_auth.sql.`,
+              fileLayer,
+              database,
+              'mysql'
+            ),
+          });
+        }
         return;
       }
 
@@ -258,7 +294,10 @@ async function main() {
           json(res, { error: 'Unauthorized' }, 401);
           return;
         }
-        if (!(await adminDbRequired())) return;
+        if (!(await isDatabaseAvailable())) {
+          json(res, { items: [], database_connected: false });
+          return;
+        }
         const limit = Math.min(Number(url.searchParams.get('limit') ?? 100), 500);
         json(res, { items: await listAllActivity(limit) });
         return;
@@ -270,7 +309,10 @@ async function main() {
           json(res, { error: 'Unauthorized' }, 401);
           return;
         }
-        if (!(await adminDbRequired())) return;
+        if (!(await isDatabaseAvailable())) {
+          json(res, { users: [], database_connected: false });
+          return;
+        }
         const users = await listUsers({
           q: url.searchParams.get('q') ?? undefined,
           role: url.searchParams.get('role') ?? undefined,
@@ -336,7 +378,10 @@ async function main() {
           json(res, { error: 'Unauthorized' }, 401);
           return;
         }
-        if (!(await adminDbRequired())) return;
+        if (!(await isDatabaseAvailable())) {
+          json(res, { clients: [], database_connected: false });
+          return;
+        }
         json(res, { clients: await listClients() });
         return;
       }
@@ -363,7 +408,10 @@ async function main() {
           json(res, { error: 'Unauthorized' }, 401);
           return;
         }
-        if (!(await adminDbRequired())) return;
+        if (!(await isDatabaseAvailable())) {
+          json(res, { tokens: [], database_connected: false });
+          return;
+        }
         json(res, { tokens: await listAccessTokens() });
         return;
       }
@@ -428,6 +476,7 @@ async function main() {
           build_id: BUILD_ID,
           render: Boolean(process.env.RENDER),
           node_env: process.env.NODE_ENV ?? 'development',
+          database: await isDatabaseAvailable(),
         });
         return;
       }

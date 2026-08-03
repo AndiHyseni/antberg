@@ -55,3 +55,18 @@ Open `http://localhost:4173`.
 - **Without MySQL:** env fallback login — default `admin@antberg.io` / `antberg-admin-2026` (override with `ANTBERG_ADMIN_EMAIL` and `ANTBERG_ADMIN_PASSWORD` on Render).
 
 Admin can manage clients, users, client access tokens, and view the activity log. Tokens issued in admin work as `/access/<token>` client links when MySQL is connected.
+
+### MySQL on Render (for admin data & live client demo)
+
+1. Create a **MySQL** instance on Render (or use an external host).
+2. On **antberg-platform** → **Environment**, add:
+   - `MYSQL_HOST`
+   - `MYSQL_PORT` (usually `3306`)
+   - `MYSQL_USER`
+   - `MYSQL_PASSWORD`
+   - `MYSQL_DATABASE` (e.g. `antberg`)
+3. Run `database/schema.sql` on that database (Workbench or Render shell).
+4. On an **existing** DB from before the admin panel, also run `database/migrations/001_admin_auth.sql`.
+5. Redeploy, then from your machine (with `database/.env` pointing at Render MySQL) run: `npm run import:db -- --reset` to load catalogue + admin user.
+
+Check connection: `GET /api/version` should include `"database": true`.

@@ -77,7 +77,29 @@ export async function fetchAdminMe(): Promise<AdminUser | null> {
   return data.user ?? null;
 }
 
+export interface AdminDatabaseMeta {
+  connected: boolean;
+  host: string;
+  port: number;
+  database: string;
+  user: string;
+}
+
+export interface AdminFileLayer {
+  catalog_opportunities: number;
+  dossiers: number;
+  evaluations_files: number;
+  catalog_path: string;
+  scan_parcels_scanned: number | null;
+  scan_opportunities: number | null;
+}
+
 export interface AdminStatsPayload {
+  database_connected?: boolean;
+  catalog_source?: 'mysql' | 'json';
+  message?: string | null;
+  database?: AdminDatabaseMeta | null;
+  file_layer?: AdminFileLayer | null;
   stats: {
     clients: number;
     active_users: number;
@@ -87,6 +109,8 @@ export interface AdminStatsPayload {
     evaluations: number;
     mandates: number;
     access_tokens: number;
+    catalog_total?: number;
+    dossiers?: number;
   };
   recent_activity: {
     id: number;
