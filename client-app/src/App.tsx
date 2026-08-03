@@ -10,6 +10,13 @@ import { AnalysisPage } from './pages/AnalysisPage';
 import { MandatePage } from './pages/MandatePage';
 import { EvaluationPage } from './pages/EvaluationPage';
 import { PipelinePage, DocumentsPage, SavedOpportunitiesPage, SettingsPage } from './pages/SecondaryPages';
+import { AdminGate, AdminLoginPage } from './components/admin/AdminGate';
+import { AdminShell } from './components/admin/AdminShell';
+import { AdminDashboardPage } from './pages/admin/AdminDashboardPage';
+import { AdminUsersPage } from './pages/admin/AdminUsersPage';
+import { AdminClientsPage } from './pages/admin/AdminClientsPage';
+import { AdminAccessTokensPage } from './pages/admin/AdminAccessTokensPage';
+import { AdminActivityPage } from './pages/admin/AdminActivityPage';
 
 export default function App() {
   return (
@@ -18,6 +25,16 @@ export default function App() {
         <Routes>
           <Route path="/access/:token" element={<AccessPage />} />
           <Route path="/access" element={<AccessPage />} />
+          <Route path="/admin/login" element={<AdminLoginPage />} />
+          <Route element={<AdminGate />}>
+            <Route path="/admin" element={<AdminShell />}>
+              <Route index element={<AdminDashboardPage />} />
+              <Route path="users" element={<AdminUsersPage />} />
+              <Route path="clients" element={<AdminClientsPage />} />
+              <Route path="access-tokens" element={<AdminAccessTokensPage />} />
+              <Route path="activity" element={<AdminActivityPage />} />
+            </Route>
+          </Route>
           <Route element={<AccessGate />}>
             <Route element={<AppShell />}>
               <Route index element={<OverviewPage />} />

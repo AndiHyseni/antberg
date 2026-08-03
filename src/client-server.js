@@ -40,6 +40,16 @@ import {
   markAllNotificationsRead,
 } from './db/activity.js';
 import { listEvaluationsFromDb, listMandateSummary } from './db/evaluations.js';
+import { adminLogin, adminLogout, resolveAdminSession } from './db/adminAuth.js';
+import { getAdminStats, listAllActivity } from './db/adminDashboard.js';
+import { listUsers, createUser, updateUser } from './db/adminUsers.js';
+import { listClients, createClient } from './db/adminClients.js';
+import {
+  listAccessTokens,
+  createAccessToken,
+  revokeAccessToken,
+} from './db/adminAccessTokens.js';
+import { validateClientAccessToken } from './db/accessTokens.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
@@ -131,6 +141,22 @@ function json(res, payload, status = 200) {
 }
 
 /**
+ * @param {import('http').IncomingMessage} req
+ */
+function bearerToken(req) {
+  const auth = req.headers.authorization ?? '';
+  if (auth.startsWith('Bearer ')) return auth.slice(7).trim();
+  return '';
+}
+
+/**
+ * @param {import('http').IncomingMessage} req
+ */
+async function requireAdmin(req) {
+  return resolveAdminSession(bearerToken(req));
+}
+
+/**
  * @param {string} relativePath
  */
 function cacheControlFor(relativePath) {
@@ -171,10 +197,204 @@ async function main() {
       if (req.method === 'OPTIONS') {
         res.writeHead(204, {
           'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS',
-          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
         });
         res.end();
+        return;
+      }
+
+      if (url.pathname === '/api/admin/login' && req.method === 'POST') {
+        const body = JSON.parse((await readBody(req)) || '{}');
+        const email = String(body.email ?? '');
+        const password = String(body.password ?? '');
+        const result = await adminLogin(email, password);
+        if (!result) {
+          json(res, { error: 'Invalid credentials' }, 401);
+          return;
+        }
+        json(res, { user: result.user, token: result.token });
+        return;
+      }
+
+      if (url.pathname === '/api/admin/logout' && req.method === 'POST') {
+        await adminLogout(bearerToken(req));
+        json(res, { ok: true });
+        return;
+      }
+
+      if (url.pathname === '/api/admin/me' && req.method === 'GET') {
+        const admin = await requireAdmin(req);
+        if (!admin) {
+          json(res, { error: 'Unauthorized' }, 401);
+          return;
+        }
+        json(res, { user: admin });
+        return;
+      }
+
+      const adminDbRequired = async () => {
+        if (!(await isDatabaseAvailable())) {
+          json(res, { error: 'Database required for this admin action' }, 503);
+          return false;
+        }
+        return true;
+      };
+
+      if (url.pathname === '/api/admin/stats' && req.method === 'GET') {
+        const admin = await requireAdmin(req);
+        if (!admin) {
+          json(res, { error: 'Unauthorized' }, 401);
+          return;
+        }
+        if (!(await adminDbRequired())) return;
+        json(res, await getAdminStats());
+        return;
+      }
+
+      if (url.pathname === '/api/admin/activity' && req.method === 'GET') {
+        const admin = await requireAdmin(req);
+        if (!admin) {
+          json(res, { error: 'Unauthorized' }, 401);
+          return;
+        }
+        if (!(await adminDbRequired())) return;
+        const limit = Math.min(Number(url.searchParams.get('limit') ?? 100), 500);
+        json(res, { items: await listAllActivity(limit) });
+        return;
+      }
+
+      if (url.pathname === '/api/admin/users' && req.method === 'GET') {
+        const admin = await requireAdmin(req);
+        if (!admin) {
+          json(res, { error: 'Unauthorized' }, 401);
+          return;
+        }
+        if (!(await adminDbRequired())) return;
+        const users = await listUsers({
+          q: url.searchParams.get('q') ?? undefined,
+          role: url.searchParams.get('role') ?? undefined,
+          clientId: url.searchParams.get('client_id')
+            ? Number(url.searchParams.get('client_id'))
+            : undefined,
+        });
+        json(res, { users });
+        return;
+      }
+
+      if (url.pathname === '/api/admin/users' && req.method === 'POST') {
+        const admin = await requireAdmin(req);
+        if (!admin) {
+          json(res, { error: 'Unauthorized' }, 401);
+          return;
+        }
+        if (!(await adminDbRequired())) return;
+        const body = JSON.parse((await readBody(req)) || '{}');
+        try {
+          const created = await createUser({
+            client_id: Number(body.client_id),
+            email: String(body.email ?? ''),
+            display_name: String(body.display_name ?? ''),
+            role: String(body.role ?? 'client'),
+            password: body.password ? String(body.password) : undefined,
+            is_active: body.is_active !== false,
+          });
+          json(res, created, 201);
+        } catch (err) {
+          json(res, { error: err.message }, 400);
+        }
+        return;
+      }
+
+      const adminUserMatch = url.pathname.match(/^\/api\/admin\/users\/(\d+)$/);
+      if (adminUserMatch && req.method === 'PATCH') {
+        const admin = await requireAdmin(req);
+        if (!admin) {
+          json(res, { error: 'Unauthorized' }, 401);
+          return;
+        }
+        if (!(await adminDbRequired())) return;
+        const body = JSON.parse((await readBody(req)) || '{}');
+        try {
+          await updateUser(Number(adminUserMatch[1]), {
+            display_name: body.display_name != null ? String(body.display_name) : undefined,
+            role: body.role != null ? String(body.role) : undefined,
+            is_active: body.is_active != null ? Boolean(body.is_active) : undefined,
+            client_id: body.client_id != null ? Number(body.client_id) : undefined,
+            password: body.password ? String(body.password) : undefined,
+          });
+          json(res, { ok: true });
+        } catch (err) {
+          json(res, { error: err.message }, 400);
+        }
+        return;
+      }
+
+      if (url.pathname === '/api/admin/clients' && req.method === 'GET') {
+        const admin = await requireAdmin(req);
+        if (!admin) {
+          json(res, { error: 'Unauthorized' }, 401);
+          return;
+        }
+        if (!(await adminDbRequired())) return;
+        json(res, { clients: await listClients() });
+        return;
+      }
+
+      if (url.pathname === '/api/admin/clients' && req.method === 'POST') {
+        const admin = await requireAdmin(req);
+        if (!admin) {
+          json(res, { error: 'Unauthorized' }, 401);
+          return;
+        }
+        if (!(await adminDbRequired())) return;
+        const body = JSON.parse((await readBody(req)) || '{}');
+        const created = await createClient({
+          name: String(body.name ?? ''),
+          slug: String(body.slug ?? body.name ?? ''),
+        });
+        json(res, created, 201);
+        return;
+      }
+
+      if (url.pathname === '/api/admin/access-tokens' && req.method === 'GET') {
+        const admin = await requireAdmin(req);
+        if (!admin) {
+          json(res, { error: 'Unauthorized' }, 401);
+          return;
+        }
+        if (!(await adminDbRequired())) return;
+        json(res, { tokens: await listAccessTokens() });
+        return;
+      }
+
+      if (url.pathname === '/api/admin/access-tokens' && req.method === 'POST') {
+        const admin = await requireAdmin(req);
+        if (!admin) {
+          json(res, { error: 'Unauthorized' }, 401);
+          return;
+        }
+        if (!(await adminDbRequired())) return;
+        const body = JSON.parse((await readBody(req)) || '{}');
+        const created = await createAccessToken({
+          client_id: Number(body.client_id),
+          label: body.label != null ? String(body.label) : undefined,
+          expires_in_days: body.expires_in_days != null ? Number(body.expires_in_days) : undefined,
+        });
+        json(res, created, 201);
+        return;
+      }
+
+      const adminTokenMatch = url.pathname.match(/^\/api\/admin\/access-tokens\/(\d+)\/revoke$/);
+      if (adminTokenMatch && req.method === 'POST') {
+        const admin = await requireAdmin(req);
+        if (!admin) {
+          json(res, { error: 'Unauthorized' }, 401);
+          return;
+        }
+        if (!(await adminDbRequired())) return;
+        await revokeAccessToken(Number(adminTokenMatch[1]));
+        json(res, { ok: true });
         return;
       }
 
@@ -186,7 +406,20 @@ async function main() {
       if (url.pathname === '/api/access/validate' && req.method === 'POST') {
         const body = JSON.parse((await readBody(req)) || '{}');
         const token = String(body.token ?? '').trim();
-        json(res, { valid: token.length > 0 && token === ACCESS_TOKEN });
+        if (!token) {
+          json(res, { valid: false });
+          return;
+        }
+        if (token === ACCESS_TOKEN) {
+          json(res, { valid: true });
+          return;
+        }
+        const dbResult = await validateClientAccessToken(token);
+        if (dbResult.valid) {
+          json(res, dbResult);
+          return;
+        }
+        json(res, { valid: false });
         return;
       }
 
@@ -552,6 +785,7 @@ async function main() {
   server.listen(port, () => {
     console.log(`Antberg Program → http://localhost:${port}`);
     console.log(`  Internal link: http://localhost:${port}/access/${ACCESS_TOKEN}`);
+    console.log(`  Admin panel:   http://localhost:${port}/admin/login`);
     console.log(`  Serving UI from ${CLIENT}`);
     console.log(`  Database: ${dbOk ? 'connected (MySQL)' : 'unavailable — using JSON files'}`);
     console.log(`  Build: ${BUILD_ID}`);

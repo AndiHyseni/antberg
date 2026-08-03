@@ -47,3 +47,11 @@ npm run client
 ```
 
 Open `http://localhost:4173`.
+
+## Admin panel
+
+- URL: `http://localhost:4173/admin/login` (same on Render: `/admin/login`)
+- **With MySQL:** run `database/migrations/001_admin_auth.sql` on existing DBs, then `npm run import:db` to seed the admin user (or set `ANTBERG_ADMIN_EMAIL` / `ANTBERG_ADMIN_PASSWORD` in env).
+- **Without MySQL:** env fallback login — default `admin@antberg.io` / `antberg-admin-2026` (override with `ANTBERG_ADMIN_EMAIL` and `ANTBERG_ADMIN_PASSWORD` on Render).
+
+Admin can manage clients, users, client access tokens, and view the activity log. Tokens issued in admin work as `/access/<token>` client links when MySQL is connected.

@@ -4,6 +4,7 @@ import mysql from 'mysql2/promise';
 import { fileURLToPath } from 'url';
 import { loadDatabaseEnv } from './db/loadEnv.js';
 import { seedOperationalData } from './db/seedOperational.js';
+import { hashPassword } from './db/password.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
@@ -56,7 +57,8 @@ Options:
 async function seedBasics(conn) {
   await conn.query(`
     INSERT INTO clients (id, name, slug) VALUES
-      (1, 'Freeman Capital Partners', 'freeman-capital')
+      (1, 'Freeman Capital Partners', 'freeman-capital'),
+      (2, 'Antberg Platform', 'antberg-platform')
     ON DUPLICATE KEY UPDATE name = VALUES(name)
   `);
 
@@ -65,6 +67,19 @@ async function seedBasics(conn) {
       (1, 1, 'alex@freemancapital.example', 'Alex Freeman', 'client')
     ON DUPLICATE KEY UPDATE display_name = VALUES(display_name)
   `);
+
+  const adminEmail = (process.env.ANTBERG_ADMIN_EMAIL ?? 'admin@antberg.io').trim().toLowerCase();
+  const adminPassword = (process.env.ANTBERG_ADMIN_PASSWORD ?? 'antberg-admin-2026').trim();
+  const adminHash = await hashPassword(adminPassword);
+  await conn.query(
+    `INSERT INTO users (id, client_id, email, display_name, role, password_hash) VALUES
+      (2, 2, ?, 'Platform Admin', 'admin', ?)
+     ON DUPLICATE KEY UPDATE
+       display_name = VALUES(display_name),
+       role = 'admin',
+       password_hash = VALUES(password_hash)`,
+    [adminEmail, adminHash]
+  );
 
   const capexRows = [
     ['roof', 'Roof', 'm2', 85, 140],

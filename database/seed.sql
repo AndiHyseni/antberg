@@ -2,12 +2,16 @@
 USE antberg;
 
 INSERT INTO clients (id, name, slug) VALUES
-  (1, 'Freeman Capital Partners', 'freeman-capital')
+  (1, 'Freeman Capital Partners', 'freeman-capital'),
+  (2, 'Antberg Platform', 'antberg-platform')
 ON DUPLICATE KEY UPDATE name = VALUES(name);
 
 INSERT INTO users (id, client_id, email, display_name, role) VALUES
   (1, 1, 'alex@freemancapital.example', 'Alex Freeman', 'client')
 ON DUPLICATE KEY UPDATE display_name = VALUES(display_name);
+
+-- Platform admin: password set via npm run import:db (see import-db-cli seedBasics)
+-- Default login: admin@antberg.io / antberg-admin-2026 (or ANTBERG_ADMIN_PASSWORD)
 
 -- Access tokens: insert after hashing your token (never store plain text).
 -- In Node: crypto.createHash('sha256').update('your-token').digest('hex')

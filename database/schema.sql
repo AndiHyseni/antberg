@@ -32,13 +32,29 @@ CREATE TABLE users (
   email         VARCHAR(255)    NOT NULL,
   display_name  VARCHAR(255)    NOT NULL,
   role          ENUM('admin','analyst','client') NOT NULL DEFAULT 'client',
+  password_hash VARCHAR(255)    NULL COMMENT 'scrypt hash for platform login',
   is_active     TINYINT(1)      NOT NULL DEFAULT 1,
+  last_login_at DATETIME        NULL,
   created_at    DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at    DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
   UNIQUE KEY uq_users_email (email),
   KEY idx_users_client (client_id),
+  KEY idx_users_role (role),
   CONSTRAINT fk_users_client FOREIGN KEY (client_id) REFERENCES clients (id)
+) ENGINE=InnoDB;
+
+CREATE TABLE admin_sessions (
+  id            BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_id       BIGINT UNSIGNED NOT NULL,
+  token_hash    CHAR(64)        NOT NULL COMMENT 'SHA-256 of session bearer token',
+  expires_at    DATETIME        NOT NULL,
+  created_at    DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_admin_sessions_token (token_hash),
+  KEY idx_admin_sessions_user (user_id),
+  KEY idx_admin_sessions_expires (expires_at),
+  CONSTRAINT fk_admin_sessions_user FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 CREATE TABLE access_tokens (
